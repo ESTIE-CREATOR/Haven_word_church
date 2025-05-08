@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,16 +53,36 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				church: {
+					50: '#f2f5fa',
+					100: '#e2ebf6',
+					200: '#cbdaee',
+					300: '#a8c1e2',
+					400: '#7ea1d3',
+					500: '#5f83c4',
+					600: '#4b6ab7',
+					700: '#4058a7',
+					800: '#394988',
+					900: '#323d6e',
+					950: '#22274a',
+				},
+				gold: {
+					50: '#fbf7ed',
+					100: '#f6ecd3',
+					200: '#ecd8a7',
+					300: '#e2bd72',
+					400: '#d8a148',
+					500: '#c98332',
+					600: '#b66826',
+					700: '#964f21',
+					800: '#7a3f20',
+					900: '#66351e',
+					950: '#3a1a0f',
 				}
+			},
+			fontFamily: {
+				'serif': ['Playfair Display', 'serif'],
+				'sans': ['Raleway', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
