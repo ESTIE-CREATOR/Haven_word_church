@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-// Church images for scrolling background
+// Church images for scrolling background (uploaded images)
 const CHURCH_IMAGES = [
   "/pictures/church_pictures/photo_2026-01-03_01-50-05.jpg",
   "/pictures/church_pictures/photo_2026-01-03_01-50-13.jpg",
@@ -13,10 +13,7 @@ const CHURCH_IMAGES = [
   "/pictures/church_pictures/photo_2026-01-03_01-50-35.jpg",
   "/pictures/church_pictures/photo_2026-01-03_01-50-40.jpg",
   "/pictures/church_pictures/photo_2026-01-03_01-50-47.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-52.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-57.jpg",
   "/pictures/church_pictures/photo_2026-01-03_01-51-03.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-51-07.jpg",
   "/pictures/church_pictures/photo_2026-01-03_01-51-11.jpg",
 ];
 
