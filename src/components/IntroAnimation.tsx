@@ -1,19 +1,13 @@
-
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
+import { ShaderAnimation } from "@/components/ui/shader-animation";
 
 gsap.registerPlugin(TextPlugin);
 
 interface IntroAnimationProps {
   onComplete?: () => void;
 }
-
-const GRADIENT_COLORS = [
-  "#9333ea", "#3b82f6", "#ec4899", "#06b6d4", "#f97316",
-  "#8b5cf6", "#2563eb", "#f472b6", "#0891b2", "#ea580c",
-  "#a855f7", "#1d4ed8", "#db2777", "#0e7490", "#c2410c"
-];
 
 const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   const [isComplete, setIsComplete] = useState(false);
@@ -77,15 +71,13 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center pointer-events-auto"
-      style={{
-        background: `linear-gradient(-45deg, ${GRADIENT_COLORS.join(", ")})`,
-        backgroundSize: "400% 400%",
-        animation: "gradientShift 15s ease infinite",
-      }}
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center pointer-events-auto bg-black"
     >
+      {/* Shader Animation Background */}
+      <ShaderAnimation />
+
       {/* Logo in top left */}
-      <div className="absolute top-4 left-4 md:top-6 md:left-6">
+      <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
         <img
           src="/pictures/logo/20260103_114553_0000.png"
           alt="Haven Word Church Logo"
@@ -96,7 +88,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
       {/* Main text */}
       <div
         ref={textRef}
-        className="text-white font-serif text-center px-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold"
+        className="text-white font-serif text-center px-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold z-10 drop-shadow-lg"
       >
         {/* Text will be typed by GSAP */}
       </div>
@@ -104,7 +96,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
       {/* Subtitle */}
       <div
         ref={subtitleRef}
-        className="text-white/80 font-serif italic text-center px-4 mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl opacity-0"
+        className="text-white/80 font-serif italic text-center px-4 mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl opacity-0 z-10 drop-shadow-lg"
       >
         ...the spread city...
       </div>
