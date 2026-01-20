@@ -1,27 +1,11 @@
-
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
-// Church images for scrolling background (uploaded images)
-const CHURCH_IMAGES = [
-  "/pictures/church_pictures/photo_2026-01-03_01-50-05.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-13.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-20.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-25.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-35.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-40.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-50-47.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-51-03.jpg",
-  "/pictures/church_pictures/photo_2026-01-03_01-51-11.jpg",
-];
+import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
 
 const Hero = () => {
   const logoRef = useRef<HTMLDivElement>(null);
-  const stack1Ref = useRef<HTMLDivElement>(null);
-  const stack2Ref = useRef<HTMLDivElement>(null);
-  const stack3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -33,87 +17,20 @@ const Hero = () => {
           { opacity: 1, scale: 1, duration: 1, ease: "power2.out", delay: 0.5 }
         );
       }
-
-      // Scrolling image stacks
-      const animateStack = (
-        ref: HTMLDivElement | null,
-        duration: number,
-        direction: "left" | "right"
-      ) => {
-        if (!ref) return;
-        const totalWidth = ref.scrollWidth / 2;
-        
-        gsap.fromTo(
-          ref,
-          { x: direction === "left" ? 0 : -totalWidth },
-          {
-            x: direction === "left" ? -totalWidth : 0,
-            duration,
-            ease: "none",
-            repeat: -1,
-          }
-        );
-      };
-
-      animateStack(stack1Ref.current, 50, "left");
-      animateStack(stack2Ref.current, 57.5, "right");
-      animateStack(stack3Ref.current, 65, "left");
     });
 
     return () => ctx.revert();
   }, []);
 
-  // Create 4 copies of images for seamless scrolling
-  const imageArray = [...CHURCH_IMAGES, ...CHURCH_IMAGES, ...CHURCH_IMAGES, ...CHURCH_IMAGES];
-
   return (
-    <div className="relative h-screen overflow-hidden">
-      {/* Scrolling Image Stacks Background */}
-      <div className="absolute inset-0 -top-20 -z-10">
-        {/* Stack 1 - Top third */}
-        <div className="absolute top-0 left-0 right-0 h-[33.333vh] overflow-hidden">
-          <div ref={stack1Ref} className="flex h-full">
-            {imageArray.map((src, index) => (
-              <img
-                key={`stack1-${index}`}
-                src={src}
-                alt=""
-                className="h-full w-[300px] object-cover flex-shrink-0"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Stack 2 - Middle third */}
-        <div className="absolute top-[33.333vh] left-0 right-0 h-[33.333vh] overflow-hidden">
-          <div ref={stack2Ref} className="flex h-full">
-            {imageArray.map((src, index) => (
-              <img
-                key={`stack2-${index}`}
-                src={src}
-                alt=""
-                className="h-full w-[300px] object-cover flex-shrink-0"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Stack 3 - Bottom third */}
-        <div className="absolute top-[66.666vh] left-0 right-0 h-[33.333vh] overflow-hidden">
-          <div ref={stack3Ref} className="flex h-full">
-            {imageArray.map((src, index) => (
-              <img
-                key={`stack3-${index}`}
-                src={src}
-                alt=""
-                className="h-full w-[300px] object-cover flex-shrink-0"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30" />
+    <div className="relative h-screen overflow-hidden bg-black">
+      {/* Rotating Globe Background */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-60">
+        <RotatingEarth 
+          width={typeof window !== 'undefined' ? window.innerWidth : 1200} 
+          height={typeof window !== 'undefined' ? window.innerHeight : 800} 
+          className="w-full h-full"
+        />
       </div>
 
       {/* Hero Content */}
@@ -145,14 +62,14 @@ const Hero = () => {
           <Button
             asChild
             variant="outline"
-            className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] text-xs sm:text-sm md:text-base bg-white/90 hover:bg-white"
+            className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] text-xs sm:text-sm md:text-base border-white/30 text-white hover:bg-white/10 hover:text-white"
           >
             <Link to="/messages/video">Watch Messages</Link>
           </Button>
           <Button
             asChild
             variant="outline"
-            className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] text-xs sm:text-sm md:text-base bg-white/90 hover:bg-white"
+            className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] text-xs sm:text-sm md:text-base border-white/30 text-white hover:bg-white/10 hover:text-white"
           >
             <a
               href="https://t.me/havenwordchurch"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/hooks/use-scroll';
@@ -38,27 +38,27 @@ const Header = () => {
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
         scrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-black/90 backdrop-blur-md border-b border-white/10 shadow-sm'
+          : 'bg-black/50 backdrop-blur-sm'
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between md:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          {/* Logo - Haven Word Church */}
+          <Link to="/" className="flex items-center gap-3">
             <img 
-              src="/pictures/spread_city/20260103_114554_0001.png" 
-              alt="Spread City Logo"
+              src="/pictures/logo/20260103_114553_0000.png" 
+              alt="Haven Word Church Logo"
               className={cn(
-                "transition-all duration-300",
+                "transition-all duration-300 rounded-full",
                 scrolled ? "h-10 w-10" : "h-12 w-12"
               )}
             />
             <span className={cn(
-              "font-bold text-foreground transition-all duration-300",
-              scrolled ? "text-lg" : "text-xl"
+              "font-bold text-white transition-all duration-300",
+              scrolled ? "text-base md:text-lg" : "text-lg md:text-xl"
             )}>
-              Spread City
+              Haven Word Church
             </span>
           </Link>
 
@@ -70,8 +70,8 @@ const Header = () => {
                 to={link.to}
                 className={cn(
                   buttonVariants({ variant: 'ghost', size: 'sm' }),
-                  'text-muted-foreground hover:text-foreground',
-                  location.pathname === link.to && 'text-primary bg-primary/10'
+                  'text-white/70 hover:text-white hover:bg-white/10',
+                  location.pathname === link.to && 'text-white bg-white/10'
                 )}
               >
                 {link.label}
@@ -82,7 +82,7 @@ const Header = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-white"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label="Toggle menu"
@@ -101,8 +101,8 @@ const Header = () => {
               to={link.to}
               onClick={() => setOpen(false)}
               className={cn(
-                'py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors border-b border-border/50',
-                location.pathname === link.to && 'text-primary'
+                'py-3 text-lg font-medium text-white/70 hover:text-white transition-colors border-b border-white/10',
+                location.pathname === link.to && 'text-white'
               )}
             >
               {link.label}
@@ -125,7 +125,7 @@ function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
     <div
       id="mobile-menu"
       className={cn(
-        'fixed inset-0 z-40 bg-background/95 backdrop-blur-md pt-20',
+        'fixed inset-0 z-40 bg-black/95 backdrop-blur-md pt-20',
         className
       )}
       {...props}
