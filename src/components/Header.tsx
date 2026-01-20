@@ -1,130 +1,141 @@
-
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Logo from "@/components/Logo";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
+import { useScroll } from '@/hooks/use-scroll';
+import { createPortal } from 'react-dom';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const scrolled = useScroll(10);
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/messages", label: "Messages" },
-    { to: "/locations", label: "Locations" },
-    { to: "/about", label: "About" },
-    { to: "/events", label: "Events" },
-    { to: "/giving", label: "Giving" },
-    { to: "/testimonies", label: "Testimonies" },
-    { to: "/contact", label: "Contact" },
+  const links = [
+    { to: '/', label: 'Home' },
+    { to: '/messages', label: 'Messages' },
+    { to: '/locations', label: 'Locations' },
+    { to: '/about', label: 'About' },
+    { to: '/events', label: 'Events' },
+    { to: '/giving', label: 'Giving' },
+    { to: '/testimonies', label: 'Testimonies' },
+    { to: '/contact', label: 'Contact' },
   ];
 
-  return (
-    <header className="sticky top-0 z-50 px-2 sm:px-4 pt-2">
-      <div
-        className={`rounded-xl sm:rounded-2xl shadow-lg transition-all duration-300 ${
-          isScrolled
-            ? "px-2 sm:px-3 py-1 sm:py-1.5"
-            : "px-3 sm:px-4 py-2 sm:py-2.5"
-        }`}
-        style={{
-          backgroundColor: "rgba(229, 231, 235, 0.95)",
-          backdropFilter: "blur(10px)",
-          borderColor: "rgba(0, 0, 0, 0.1)",
-          borderWidth: "1px",
-        }}
-      >
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div
-            className={`transition-transform duration-300 ${
-              isScrolled ? "scale-75 sm:scale-85" : "scale-90 sm:scale-95"
-            }`}
-          >
-            <Logo size="sm" showText={false} />
-          </div>
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden text-gray-900"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </Button>
+  return (
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full transition-all duration-300',
+        scrolled
+          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
+          : 'bg-transparent'
+      )}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between md:h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <img 
+              src="/pictures/spread_city/20260103_114554_0001.png" 
+              alt="Spread City Logo"
+              className={cn(
+                "transition-all duration-300",
+                scrolled ? "h-10 w-10" : "h-12 w-12"
+              )}
+            />
+            <span className={cn(
+              "font-bold text-foreground transition-all duration-300",
+              scrolled ? "text-lg" : "text-xl"
+            )}>
+              Spread City
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav
-            className={`hidden lg:flex items-center ml-auto transition-all duration-300 ${
-              isScrolled ? "gap-2 xl:gap-3" : "gap-3 xl:gap-5"
-            }`}
-          >
-            {navLinks.map((link) => (
+          <nav className="hidden lg:flex items-center gap-1">
+            {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-gray-900 hover:text-primary font-medium transition-colors duration-200 ${
-                  isScrolled ? "text-xs xl:text-sm" : "text-sm xl:text-base"
-                } ${location.pathname === link.to ? "text-primary" : ""}`}
+                className={cn(
+                  buttonVariants({ variant: 'ghost', size: 'sm' }),
+                  'text-muted-foreground hover:text-foreground',
+                  location.pathname === link.to && 'text-primary bg-primary/10'
+                )}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-        </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav
-            className="lg:hidden mt-2 rounded-lg px-4 py-3 sm:py-4"
-            style={{
-              backgroundColor: "rgba(229, 231, 235, 0.95)",
-            }}
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden p-2 text-foreground"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label="Toggle menu"
           >
-            <div className="flex flex-col gap-3 sm:gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`text-gray-900 hover:text-primary font-medium py-1 text-sm sm:text-base transition-colors duration-200 ${
-                    location.pathname === link.to ? "text-primary" : ""
-                  }`}
-                  onClick={closeMenu}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        )}
+            <MenuToggleIcon open={open} className="size-7" />
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      <MobileMenu open={open}>
+        <nav className="flex flex-col gap-2 px-4">
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setOpen(false)}
+              className={cn(
+                'py-3 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors border-b border-border/50',
+                location.pathname === link.to && 'text-primary'
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </MobileMenu>
     </header>
   );
 };
+
+type MobileMenuProps = React.ComponentProps<'div'> & {
+  open: boolean;
+};
+
+function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
+  if (!open || typeof window === 'undefined') return null;
+
+  return createPortal(
+    <div
+      id="mobile-menu"
+      className={cn(
+        'fixed inset-0 z-40 bg-background/95 backdrop-blur-md pt-20',
+        className
+      )}
+      {...props}
+    >
+      <div className="container mx-auto py-6">
+        {children}
+      </div>
+    </div>,
+    document.body
+  );
+}
 
 export default Header;
