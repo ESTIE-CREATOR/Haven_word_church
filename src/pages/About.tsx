@@ -1,39 +1,39 @@
 
-import Header from "@/components/Header";
+import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
 
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-church-800 text-white py-20">
+        <section className="relative bg-gray-900 text-white py-20">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1466442929976-97f336a657be')] bg-cover bg-center opacity-30"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">About Our Church</h1>
-              <p className="text-xl text-gray-100">
-                Faith In Focus is a place where everyone is welcome to discover and deepen their faith.
+              <h1 className="text-2xl md:text-3xl font-serif font-bold mb-6">About Our Church</h1>
+              <p className="text-base md:text-lg text-gray-100">
+                Haven Word Church is a place where everyone is welcome to discover and deepen their faith.
               </p>
             </div>
           </div>
         </section>
 
         {/* Our Story Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-black">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="heading-lg text-center mb-8">Our Story</h2>
-              <div className="prose prose-lg max-w-none text-gray-700">
+              <h2 className="heading-lg text-center mb-8 text-white">Our Story</h2>
+              <div className="prose prose-lg max-w-none text-gray-300">
                 <p>
-                  Faith In Focus Church was founded in 1985 by a small group of dedicated individuals with a vision to create a welcoming spiritual home for all. What began as a humble gathering in a community center has grown into a thriving congregation with hundreds of active members.
+                  Haven Word Church was founded with a vision to create a welcoming spiritual home for all. What began as a humble gathering has grown into a thriving congregation known as "The Spread City" - raising thousands of preachers in countless cities.
                 </p>
                 <p className="mt-4">
                   Throughout our history, we've remained committed to our founding principles of inclusivity, spiritual growth, and community service. Our church has evolved over the years, adapting to the changing needs of our community while staying true to our core biblical teachings.
                 </p>
                 <p className="mt-4">
-                  Today, Faith In Focus stands as a beacon of hope and fellowship in our community. We continue to expand our ministries and outreach programs, always seeking new ways to serve both our members and the broader community around us.
+                  Today, Haven Word Church stands as a beacon of hope and fellowship in our community. We continue to expand our ministries and outreach programs, always seeking new ways to serve both our members and the broader community around us.
                 </p>
               </div>
             </div>
@@ -41,21 +41,21 @@ const About = () => {
         </section>
 
         {/* Our Mission & Values Section */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-gray-900">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="heading-lg text-center mb-12">Our Mission & Values</h2>
+              <h2 className="heading-lg text-center mb-12 text-white">Our Mission & Values</h2>
               
               <div className="mb-16">
-                <h3 className="heading-md text-center mb-6">Our Mission</h3>
-                <div className="text-center text-xl font-serif text-church-700 max-w-2xl mx-auto">
+                <h3 className="heading-md text-center mb-6 text-white">Our Mission</h3>
+                <div className="text-center text-base md:text-lg font-serif text-gray-300 max-w-2xl mx-auto">
                   "To create a vibrant community of faith where people can experience God's love, 
                   grow spiritually, and serve others with compassion and grace."
                 </div>
               </div>
               
               <div>
-                <h3 className="heading-md text-center mb-8">Core Values</h3>
+                <h3 className="heading-md text-center mb-8 text-white">Core Values</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
                     {
@@ -89,10 +89,10 @@ const About = () => {
                       icon: "🤲",
                     }
                   ].map((value, index) => (
-                    <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                    <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-700">
                       <div className="text-3xl mb-3 text-center">{value.icon}</div>
-                      <h4 className="text-xl font-semibold font-serif text-church-700 mb-2 text-center">{value.title}</h4>
-                      <p className="text-gray-600 text-center">{value.description}</p>
+                      <h4 className="text-lg font-semibold font-serif text-white mb-2 text-center">{value.title}</h4>
+                      <p className="text-gray-300 text-center">{value.description}</p>
                     </div>
                   ))}
                 </div>
@@ -102,10 +102,10 @@ const About = () => {
         </section>
 
         {/* Leadership Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-gray-900">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="heading-lg text-center mb-12">Our Leadership</h2>
+              <h2 className="heading-lg text-center mb-12 text-white">Our Leadership</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
@@ -141,9 +141,9 @@ const About = () => {
                       className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0" 
                     />
                     <div>
-                      <h3 className="text-xl font-serif font-semibold text-church-700">{leader.name}</h3>
-                      <p className="text-church-500 mb-2">{leader.role}</p>
-                      <p className="text-gray-600">{leader.bio}</p>
+                      <h3 className="text-lg font-serif font-semibold text-white">{leader.name}</h3>
+                      <p className="text-primary mb-2">{leader.role}</p>
+                      <p className="text-gray-300">{leader.bio}</p>
                     </div>
                   </div>
                 ))}

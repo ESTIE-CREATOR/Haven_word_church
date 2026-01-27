@@ -15,9 +15,9 @@ const Logo = ({ size = "md", showText = true, className = "" }: LogoProps) => {
   };
 
   const textSizeClasses = {
-    sm: "text-base sm:text-lg",
-    md: "text-lg md:text-xl",
-    lg: "text-xl lg:text-2xl",
+    sm: "text-sm sm:text-base",
+    md: "text-base md:text-lg",
+    lg: "text-lg lg:text-xl",
   };
 
   return (

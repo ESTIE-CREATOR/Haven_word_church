@@ -16,6 +16,9 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   const subtitleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Reset state on mount to ensure animation plays on every refresh
+    setIsComplete(false);
+    
     if (!containerRef.current || !textRef.current || !subtitleRef.current) return;
 
     const ctx = gsap.context(() => {
@@ -88,7 +91,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
       {/* Main text */}
       <div
         ref={textRef}
-        className="text-white font-serif text-center px-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold z-10 drop-shadow-lg"
+        className="text-white font-serif text-center px-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold z-10 drop-shadow-lg"
       >
         {/* Text will be typed by GSAP */}
       </div>
@@ -96,7 +99,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
       {/* Subtitle */}
       <div
         ref={subtitleRef}
-        className="text-white/80 font-serif italic text-center px-4 mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl opacity-0 z-10 drop-shadow-lg"
+        className="text-white/80 font-serif italic text-center px-4 mt-4 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl opacity-0 z-10 drop-shadow-lg"
       >
         ...the spread city...
       </div>

@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface SermonHighlightProps {
@@ -38,14 +38,14 @@ const SermonHighlight = ({
               <div className="text-sm text-church-500 mb-1">
                 {date} • {pastor}
               </div>
-              <h3 className="text-xl font-serif font-semibold mb-2">{title}</h3>
+              <h3 className="text-lg font-serif font-semibold mb-2">{title}</h3>
               <p className="italic text-sm text-gray-500 mb-3">{scripture}</p>
               <p className="text-gray-600 mb-4 line-clamp-3">{description}</p>
             </div>
             <div className="mt-auto">
-              <Button asChild variant="outline" size="sm">
+              <InteractiveHoverButton asChild text="Listen to Sermon">
                 <Link to="/sermons">Listen to Sermon</Link>
-              </Button>
+              </InteractiveHoverButton>
             </div>
           </div>
         </div>

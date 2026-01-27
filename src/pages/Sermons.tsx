@@ -1,8 +1,8 @@
 
-import Header from "@/components/Header";
+import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
 import SermonHighlight from "@/components/SermonHighlight";
-import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const Sermons = () => {
   // Sample sermon data
@@ -68,15 +68,15 @@ const Sermons = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-church-800 text-white py-20">
+        <section className="relative bg-gray-900 text-white py-20">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494891848038-7bd202a2afeb')] bg-cover bg-center opacity-30"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Sermons & Teachings</h1>
-              <p className="text-xl text-gray-100">
+              <h1 className="text-2xl md:text-3xl font-serif font-bold mb-6">Sermons & Teachings</h1>
+              <p className="text-base md:text-lg text-gray-100">
                 Explore our collection of inspiring messages to deepen your faith and spiritual understanding.
               </p>
             </div>
@@ -84,38 +84,30 @@ const Sermons = () => {
         </section>
 
         {/* Sermon Archive */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-black">
           <div className="container-custom">
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Sidebar */}
               <div className="lg:w-1/4">
-                <div className="bg-gray-50 p-6 rounded-lg sticky top-20">
-                  <h3 className="text-lg font-serif font-semibold text-church-700 mb-4">Browse By Series</h3>
+                <div className="bg-gray-900 p-6 rounded-lg sticky top-20">
+                  <h3 className="text-lg font-serif font-semibold text-white mb-4">Browse By Series</h3>
                   <ul className="space-y-2">
                     {sermonSeries.map((series, index) => (
                       <li key={index}>
-                        <Button 
-                          variant="ghost" 
-                          className="w-full justify-start text-left hover:bg-church-100 hover:text-church-800"
-                        >
-                          {series}
-                        </Button>
+                        <InteractiveHoverButton 
+                          text={series}
+                          className="w-full justify-start text-left hover:bg-church-100 hover:text-church-800 border-transparent"
+                        />
                       </li>
                     ))}
                   </ul>
                   
                   <div className="mt-8 border-t border-gray-200 pt-6">
-                    <h3 className="text-lg font-serif font-semibold text-church-700 mb-4">Looking For</h3>
+                    <h3 className="text-lg font-serif font-semibold text-white mb-4">Looking For</h3>
                     <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-start text-left border-church-200">
-                        Recent Sermons
-                      </Button>
-                      <Button variant="outline" className="w-full justify-start text-left border-church-200">
-                        Most Popular
-                      </Button>
-                      <Button variant="outline" className="w-full justify-start text-left border-church-200">
-                        Special Events
-                      </Button>
+                      <InteractiveHoverButton text="Recent Sermons" className="w-full justify-start text-left border-church-200" />
+                      <InteractiveHoverButton text="Most Popular" className="w-full justify-start text-left border-church-200" />
+                      <InteractiveHoverButton text="Special Events" className="w-full justify-start text-left border-church-200" />
                     </div>
                   </div>
                 </div>
@@ -140,9 +132,7 @@ const Sermons = () => {
                 </div>
                 
                 <div className="mt-10 flex justify-center">
-                  <Button variant="outline" className="border-church-200">
-                    Load More Sermons
-                  </Button>
+                  <InteractiveHoverButton text="Load More Sermons" className="border-church-200" />
                 </div>
               </div>
             </div>
@@ -154,16 +144,12 @@ const Sermons = () => {
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="heading-md mb-4">Join Us For Our Next Service</h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-300 mb-6">
                 Experience these messages in person. We'd love to welcome you to our church community!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button className="bg-church-600 hover:bg-church-700">
-                  Service Times
-                </Button>
-                <Button variant="outline" className="border-church-200 text-church-700">
-                  Subscribe to Podcast
-                </Button>
+                <InteractiveHoverButton text="Service Times" className="bg-church-600 hover:bg-church-700 border-church-600" />
+                <InteractiveHoverButton text="Subscribe to Podcast" className="border-church-200 text-white" />
               </div>
             </div>
           </div>

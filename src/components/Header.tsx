@@ -56,7 +56,7 @@ const Header = () => {
             />
             <span className={cn(
               "font-bold text-white transition-all duration-300",
-              scrolled ? "text-base md:text-lg" : "text-lg md:text-xl"
+              scrolled ? "text-sm md:text-base" : "text-base md:text-lg"
             )}>
               Haven Word Church
             </span>
@@ -101,7 +101,7 @@ const Header = () => {
               to={link.to}
               onClick={() => setOpen(false)}
               className={cn(
-                'py-3 text-lg font-medium text-white/70 hover:text-white transition-colors border-b border-white/10',
+                'py-3 text-base font-medium text-white/70 hover:text-white transition-colors border-b border-white/10',
                 location.pathname === link.to && 'text-white'
               )}
             >

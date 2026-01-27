@@ -1,6 +1,6 @@
 
 import { CalendarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 interface EventCardProps {
@@ -28,13 +28,11 @@ const EventCard = ({ title, date, time, description, image }: EventCardProps) =>
           <CalendarIcon className="h-4 w-4 mr-2" />
           <span className="text-sm">{date} • {time}</span>
         </div>
-        <h3 className="text-xl font-serif font-medium mb-2">{title}</h3>
+        <h3 className="text-lg font-serif font-medium mb-2">{title}</h3>
         <p className="text-gray-600">{description}</p>
       </CardContent>
       <CardFooter>
-        <Button variant="outline" className="w-full border-church-200 text-church-700 hover:bg-church-50">
-          Learn More
-        </Button>
+        <InteractiveHoverButton text="Learn More" className="w-full border-church-200 text-church-700 hover:bg-church-50" />
       </CardFooter>
     </Card>
   );

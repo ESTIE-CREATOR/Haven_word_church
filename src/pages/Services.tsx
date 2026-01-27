@@ -1,7 +1,7 @@
 
-import Header from "@/components/Header";
+import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Link } from "react-router-dom";
 import EventCard from "@/components/EventCard";
 
@@ -54,15 +54,15 @@ const Services = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-church-800 text-white py-20">
+        <section className="relative bg-gray-900 text-white py-20">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551038247-3d9af20df552')] bg-cover bg-center opacity-30"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Services & Events</h1>
-              <p className="text-xl text-gray-100">
+              <h1 className="text-2xl md:text-3xl font-serif font-bold mb-6">Services & Events</h1>
+              <p className="text-base md:text-lg text-gray-100">
                 Join us for worship services, community events, and ministry opportunities.
               </p>
             </div>
@@ -70,33 +70,33 @@ const Services = () => {
         </section>
 
         {/* Worship Services Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-black">
           <div className="container-custom">
             <h2 className="heading-lg text-center mb-12">Weekly Worship Services</h2>
             
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-serif font-semibold text-church-800 mb-3">Sunday Morning Worship</h3>
-                  <div className="space-y-3 text-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Sunday Morning Worship</h3>
+                  <div className="space-y-3 text-gray-300">
                     <p><strong>Times:</strong> 8:00 AM & 10:30 AM</p>
-                    <p><strong>Location:</strong> Main Sanctuary</p>
+                    <p><strong>Location:</strong> Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
                     <p>Our Sunday services feature inspiring messages, uplifting worship music, and a welcoming community atmosphere.</p>
                   </div>
                 </div>
                 
                 <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-serif font-semibold text-church-800 mb-3">Wednesday Bible Study</h3>
-                  <div className="space-y-3 text-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Wednesday Bible Study</h3>
+                  <div className="space-y-3 text-gray-300">
                     <p><strong>Time:</strong> 7:00 PM</p>
-                    <p><strong>Location:</strong> Fellowship Hall</p>
+                    <p><strong>Location:</strong> Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
                     <p>Mid-week study focusing on deeper exploration of scripture, discussion, and prayer.</p>
                   </div>
                 </div>
                 
                 <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-serif font-semibold text-church-800 mb-3">Youth Fellowship</h3>
-                  <div className="space-y-3 text-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Youth Fellowship</h3>
+                  <div className="space-y-3 text-gray-300">
                     <p><strong>Time:</strong> Fridays at 6:00 PM</p>
                     <p><strong>Location:</strong> Youth Center</p>
                     <p>Engaging program for teens featuring activities, worship, and relevant teachings.</p>
@@ -104,8 +104,8 @@ const Services = () => {
                 </div>
                 
                 <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-serif font-semibold text-church-800 mb-3">Children's Church</h3>
-                  <div className="space-y-3 text-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Children's Church</h3>
+                  <div className="space-y-3 text-gray-300">
                     <p><strong>Time:</strong> During 10:30 AM Service</p>
                     <p><strong>Location:</strong> Children's Wing</p>
                     <p>Fun, age-appropriate spiritual learning for children ages 4-12.</p>
@@ -114,16 +114,16 @@ const Services = () => {
               </div>
               
               <div className="mt-10 text-center">
-                <Button asChild className="bg-church-600 hover:bg-church-700">
+                <InteractiveHoverButton asChild text="Plan Your Visit" className="bg-church-600 hover:bg-church-700 border-church-600">
                   <Link to="/contact">Plan Your Visit</Link>
-                </Button>
+                </InteractiveHoverButton>
               </div>
             </div>
           </div>
         </section>
         
         {/* Ministries Section */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-gray-900">
           <div className="container-custom">
             <h2 className="heading-lg text-center mb-12">Our Ministries</h2>
             
@@ -160,25 +160,25 @@ const Services = () => {
                   icon: "🙏"
                 },
               ].map((ministry, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                <div key={index} className="bg-black p-6 rounded-lg shadow-sm">
                   <div className="text-3xl mb-3 text-center">{ministry.icon}</div>
-                  <h3 className="text-xl font-serif font-semibold text-church-700 mb-3 text-center">{ministry.title}</h3>
-                  <p className="text-gray-600 text-center">{ministry.description}</p>
+                  <h3 className="text-lg font-serif font-semibold text-white mb-3 text-center">{ministry.title}</h3>
+                  <p className="text-gray-300 text-center">{ministry.description}</p>
                 </div>
               ))}
             </div>
             
             <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-4">Interested in joining or learning more about our ministries?</p>
-              <Button asChild variant="outline" className="border-church-200 text-church-700">
+              <p className="text-gray-300 mb-4">Interested in joining or learning more about our ministries?</p>
+              <InteractiveHoverButton asChild text="Get Involved" className="border-church-200 text-white">
                 <Link to="/contact">Get Involved</Link>
-              </Button>
+              </InteractiveHoverButton>
             </div>
           </div>
         </section>
         
         {/* Upcoming Events Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-black">
           <div className="container-custom">
             <h2 className="heading-lg text-center mb-12">Upcoming Events</h2>
             
@@ -196,10 +196,10 @@ const Services = () => {
             </div>
             
             <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-4">Have questions about our events?</p>
-              <Button asChild className="bg-church-600 hover:bg-church-700">
+              <p className="text-gray-300 mb-4">Have questions about our events?</p>
+              <InteractiveHoverButton asChild text="Contact Us" className="bg-church-600 hover:bg-church-700 border-church-600">
                 <Link to="/contact">Contact Us</Link>
-              </Button>
+              </InteractiveHoverButton>
             </div>
           </div>
         </section>
