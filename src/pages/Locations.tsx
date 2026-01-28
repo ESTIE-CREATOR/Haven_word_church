@@ -36,27 +36,48 @@ const Locations = () => {
           </div>
         </section>
 
+        {/* Map Section - Moved Above Location Info */}
+        <section className="bg-gray-900 section-padding">
+          <div className="container-custom mb-8">
+            <div className="h-96 w-full rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5!2d3.9470!3d7.3775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjInMzkuMCJOIDPCsDU2JzQ5LjIiRQ!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Haven Word Church Location"
+              ></iframe>
+            </div>
+            <div className="text-center mt-4">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Haven+Word+Church+Opposite+Gate+5+Adamasingba+Ibadan+Oyo+State"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline text-sm"
+              >
+                View on Google Maps
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Locations List */}
         <section className="section-padding bg-black">
           <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="max-w-4xl mx-auto">
               {locations.map((location, index) => (
                 <Card key={index} className="overflow-hidden bg-gray-900 border-gray-800">
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src={location.image}
-                      alt={location.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-6 bg-gray-900">
-                    <h2 className="heading-md mb-4 text-white">{location.name}</h2>
+                  <CardContent className="p-6 md:p-8 bg-gray-900">
+                    <h2 className="heading-md mb-6 text-white">{location.name}</h2>
                     
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-medium text-white">Address</p>
+                          <p className="font-medium text-white mb-1">Address</p>
                           <p className="text-gray-300">{location.address}</p>
                         </div>
                       </div>
@@ -64,7 +85,7 @@ const Locations = () => {
                       <div className="flex items-start gap-3">
                         <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-medium text-white">Phone</p>
+                          <p className="font-medium text-white mb-1">Phone</p>
                           <p className="text-gray-300">{location.phone}</p>
                         </div>
                       </div>
@@ -72,7 +93,7 @@ const Locations = () => {
                       <div className="flex items-start gap-3">
                         <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-medium text-white">Email</p>
+                          <p className="font-medium text-white mb-1">Email</p>
                           <p className="text-gray-300">{location.email}</p>
                         </div>
                       </div>
@@ -95,7 +116,7 @@ const Locations = () => {
 
                     <div className="mt-6 pt-6 border-t border-gray-700">
                       <a
-                        href={`https://maps.google.com/?q=${encodeURIComponent(location.address)}`}
+                        href={`https://maps.google.com/?q=${encodeURIComponent('Haven Word Church ' + location.address)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
@@ -107,75 +128,6 @@ const Locations = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Map Section */}
-        <section className="bg-gray-900">
-          <div className="h-96 w-full">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5!2d3.9470!3d7.3775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjInMzkuMCJOIDPCsDU2JzQ5LjIiRQ!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Haven Word Church Location - Opposite Gate 5, Adamasingba, Ibadan"
-            ></iframe>
-          </div>
-          <div className="container-custom py-6">
-            <div className="text-center mb-8">
-              <p className="text-sm text-gray-300 mb-4">
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Opposite+Gate+5+Adamasingba+Ibadan+Oyo+State"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  View on Google Maps
-                </a>
-              </p>
-            </div>
-            
-            {/* Contact Information */}
-            <div className="max-w-2xl mx-auto">
-              <Card className="bg-gray-800 border-gray-700">
-                <CardContent className="p-6">
-                  <h3 className="heading-md text-white mb-6 text-center">Contact Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex items-start gap-3">
-                      <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-white mb-1">Phone</p>
-                        <p className="text-gray-300 text-sm">
-                          <a href="tel:+2348158884938" className="hover:text-white transition-colors">
-                            +234 815 888 4938
-                          </a>
-                        </p>
-                        <p className="text-gray-300 text-sm">
-                          <a href="tel:+2349077469204" className="hover:text-white transition-colors">
-                            +234 907 746 9204
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-white mb-1">Email</p>
-                        <p className="text-gray-300 text-sm">
-                          <a href="mailto:havenwordchurch@gmail.com" className="hover:text-white transition-colors">
-                            havenwordchurch@gmail.com
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>
