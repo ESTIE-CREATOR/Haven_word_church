@@ -21,18 +21,18 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-screen overflow-hidden max-w-full">
       {/* Background Image with Sky and Landscape */}
       <div className="absolute inset-0">
         {/* Sky Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-800 via-slate-700 to-slate-600"></div>
         
         {/* Cloudy Sky Effect */}
-        <div className="absolute inset-0 opacity-60">
+        <div className="absolute inset-0 opacity-60 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-2/3 bg-gradient-to-b from-slate-900/80 via-slate-800/60 to-transparent"></div>
-          <div className="absolute top-20 left-10 w-96 h-32 bg-slate-700/40 rounded-full blur-3xl"></div>
-          <div className="absolute top-40 right-20 w-80 h-40 bg-slate-600/30 rounded-full blur-3xl"></div>
-          <div className="absolute top-10 left-1/2 w-72 h-36 bg-slate-800/50 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-4 sm:left-10 w-64 sm:w-96 h-32 bg-slate-700/40 rounded-full blur-3xl"></div>
+          <div className="absolute top-40 right-4 sm:right-20 w-56 sm:w-80 h-40 bg-slate-600/30 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-56 sm:w-72 h-36 bg-slate-800/50 rounded-full blur-3xl"></div>
         </div>
 
         {/* Landscape - Grass/Hills */}
@@ -49,48 +49,48 @@ const Hero = () => {
         <div className="absolute bottom-1/4 left-1/4 -translate-x-1/2 w-32 h-2 bg-slate-900/80 shadow-2xl" style={{ top: 'calc(25% - 64px)' }}></div>
 
         {/* Town/City Silhouette in Background */}
-        <div className="absolute bottom-1/3 left-0 right-0 h-32 opacity-40">
+        <div className="absolute bottom-1/3 left-0 right-0 h-32 opacity-40 overflow-hidden">
           {/* Building shapes */}
-          <div className="absolute bottom-0 left-1/4 w-16 h-24 bg-slate-900/60"></div>
-          <div className="absolute bottom-0 left-1/3 w-12 h-32 bg-slate-900/60"></div>
-          <div className="absolute bottom-0 left-1/2 w-20 h-20 bg-slate-900/60"></div>
-          <div className="absolute bottom-0 right-1/4 w-14 h-28 bg-slate-900/60"></div>
+          <div className="absolute bottom-0 left-1/4 w-12 sm:w-16 h-20 sm:h-24 bg-slate-900/60"></div>
+          <div className="absolute bottom-0 left-1/3 w-10 sm:w-12 h-24 sm:h-32 bg-slate-900/60"></div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-16 sm:h-20 bg-slate-900/60"></div>
+          <div className="absolute bottom-0 right-1/4 w-12 sm:w-14 h-24 sm:h-28 bg-slate-900/60"></div>
           {/* Church spire */}
-          <div className="absolute bottom-0 right-1/3 w-4 h-40 bg-slate-900/60"></div>
-          <div className="absolute bottom-36 right-1/3 -translate-x-1/2 w-8 h-8 bg-slate-900/60 rotate-45"></div>
+          <div className="absolute bottom-0 right-1/3 w-3 sm:w-4 h-32 sm:h-40 bg-slate-900/60"></div>
+          <div className="absolute bottom-32 sm:bottom-36 right-1/3 -translate-x-1/2 w-6 sm:w-8 h-6 sm:h-8 bg-slate-900/60 rotate-45"></div>
         </div>
 
         {/* Water/Harbor Effect */}
-        <div className="absolute bottom-1/3 right-0 w-1/4 h-8 bg-slate-900/50"></div>
+        <div className="absolute bottom-1/3 right-0 w-1/4 sm:w-1/4 h-8 bg-slate-900/50"></div>
       </div>
 
       {/* Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
 
       {/* Hero Content - Moved down to avoid header */}
-      <div className="relative z-20 h-full flex items-center justify-center px-4 md:px-8 lg:px-12 pt-24">
+      <div className="relative z-20 h-full flex items-center justify-center px-4 md:px-8 lg:px-12 pt-24 overflow-x-hidden">
         <div
           ref={textRef}
-          className="opacity-0 text-center max-w-4xl"
+          className="opacity-0 text-center max-w-[90vw] md:max-w-4xl mx-auto w-full"
         >
           {/* Main Message in Script Font */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-script text-white mb-4 md:mb-6 leading-tight" style={{ fontFamily: "'Dancing Script', cursive" }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-script text-white mb-4 md:mb-6 leading-tight break-words px-2" style={{ fontFamily: "'Dancing Script', cursive" }}>
             Haven Word Church
           </h1>
           {/* Underline brushstroke */}
-          <div className="w-64 h-1 bg-white/80 mx-auto mb-6 rounded-full"></div>
+          <div className="w-48 sm:w-64 h-1 bg-white/80 mx-auto mb-6 rounded-full"></div>
           
           {/* Sub Message */}
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 font-sans">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mb-8 font-sans px-2 break-words">
             ...the spread city...
           </p>
 
           {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <InteractiveHoverButton asChild text="Messages" className="px-8 py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10">
+          <div className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-2">
+            <InteractiveHoverButton asChild text="Messages" className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10 text-sm sm:text-base">
               <Link to="/messages">Messages</Link>
             </InteractiveHoverButton>
-            <InteractiveHoverButton asChild text="Contact" className="px-8 py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10">
+            <InteractiveHoverButton asChild text="Contact" className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10 text-sm sm:text-base">
               <Link to="/contact">Contact</Link>
             </InteractiveHoverButton>
           </div>

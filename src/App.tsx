@@ -27,8 +27,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
+        <div className="overflow-x-hidden max-w-full">
+          <ScrollToTop />
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

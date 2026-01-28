@@ -43,15 +43,15 @@ export function TubelightHeader() {
       </div>
 
       {/* Mobile: Hamburger Menu */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-        <div className="flex items-center justify-between px-4 py-3">
-          <Link to="/" className="flex items-center gap-2">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 overflow-x-hidden max-w-full">
+        <div className="flex items-center justify-between px-2 sm:px-4 py-3 max-w-full">
+          <Link to="/" className="flex items-center gap-1 sm:gap-2 min-w-0 flex-shrink">
             <img 
               src="/pictures/logo/20260103_114553_0000.png" 
               alt="Haven Word Church Logo"
-              className="h-8 w-8 rounded-full"
+              className="h-8 w-8 rounded-full flex-shrink-0"
             />
-            <span className="font-bold text-white text-sm">Haven Word Church</span>
+            <span className="font-bold text-white text-xs sm:text-sm truncate">Haven Word Church</span>
           </Link>
           
           <button

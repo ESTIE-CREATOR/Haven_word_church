@@ -52,15 +52,20 @@
 
   html {
     @apply bg-black;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-black text-white text-sm;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   #root {
     @apply bg-black min-h-screen;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -78,7 +83,7 @@
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-4 md:px-6;
+    @apply container mx-auto px-4 md:px-6 max-w-full overflow-x-hidden;
   }
   
   .section-padding {

@@ -101,7 +101,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
       {/* Main text */}
       <div
         ref={textRef}
-        className="text-white font-serif text-center px-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold z-10 drop-shadow-lg"
+        className="text-white font-serif text-center px-4 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold z-10 drop-shadow-lg break-words max-w-[90vw] mx-auto"
       >
         {/* Text will be typed by GSAP */}
       </div>

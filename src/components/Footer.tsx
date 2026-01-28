@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <footer className="bg-black text-gray-300 border-t border-gray-800">
       <div className="container-custom px-4 sm:px-6 py-8 sm:py-10 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <Logo size="sm" showText={false} className="mb-4" />
             <p className="text-gray-400 text-sm sm:text-base mb-3">
               Haven Word Church
@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="order-3">
             <h3 className="text-base font-semibold font-serif mb-4 text-white">
               Contact
             </h3>
@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
 
           {/* Additional Links */}
-          <div>
+          <div className="col-span-2 md:col-span-1 lg:col-span-1 order-4">
             <h3 className="text-base font-semibold font-serif mb-4 text-white">
               More
             </h3>

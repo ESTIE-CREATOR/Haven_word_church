@@ -65,7 +65,7 @@ const Events = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
