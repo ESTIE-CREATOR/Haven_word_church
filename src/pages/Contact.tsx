@@ -36,21 +36,21 @@ const Contact = () => {
     // Open Google Form in new tab
     window.open(GOOGLE_FORM_URL, '_blank');
     
-    toast({
+      toast({
       title: "Opening Form",
       description: "Please fill out the Google Form to submit your message. Your submission will be saved automatically.",
-    });
+      });
     
     setIsSubmitting(false);
     
     // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: ""
-    });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: ""
+      });
   };
 
   return (
@@ -255,7 +255,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Haven Word Church Location"
               ></iframe>
-            </div>
+              </div>
             <div className="text-center mt-4">
               <a
                 href="https://www.google.com/maps/search/?api=1&query=9VXM%2B797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo"
