@@ -1,6 +1,7 @@
 
 import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
+import LeadershipSection from "@/components/LeadershipSection";
 
 const About = () => {
   return (
@@ -102,55 +103,7 @@ const About = () => {
         </section>
 
         {/* Leadership Section */}
-        <section className="section-padding bg-gray-900">
-          <div className="container-custom">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="heading-lg text-center mb-12 text-white">Our Leadership</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {[
-                  {
-                    name: "Pastor David Wilson",
-                    role: "Senior Pastor",
-                    bio: "Pastor David has been leading our congregation for over 15 years. With a background in theology and counseling, he brings depth, wisdom, and compassion to his ministry.",
-                    image: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  },
-                  {
-                    name: "Sarah Mitchell",
-                    role: "Worship Director",
-                    bio: "Sarah has been leading our worship ministry since 2018. Her passion for music and worship creates meaningful experiences that help our congregation connect with God.",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  },
-                  {
-                    name: "Michael Thompson",
-                    role: "Youth Pastor",
-                    bio: "Michael leads our vibrant youth ministry with energy and dedication. He focuses on helping young people build strong foundations of faith during their formative years.",
-                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  },
-                  {
-                    name: "Rebecca Martinez",
-                    role: "Community Outreach Coordinator",
-                    bio: "Rebecca oversees our community service initiatives. Her organizational skills and compassionate heart help us make a meaningful difference in our local community.",
-                    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                  }
-                ].map((leader, index) => (
-                  <div key={index} className="flex flex-col md:flex-row gap-4 items-start">
-                    <img 
-                      src={leader.image} 
-                      alt={leader.name}
-                      className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0" 
-                    />
-                    <div>
-                      <h3 className="text-lg font-serif font-semibold text-white">{leader.name}</h3>
-                      <p className="text-primary mb-2">{leader.role}</p>
-                      <p className="text-gray-300">{leader.bio}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <LeadershipSection />
       </main>
       <Footer />
     </div>
