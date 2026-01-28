@@ -122,7 +122,7 @@ const Events = () => {
                   </div>
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-300 mb-3">
                     <MapPin className="h-4 w-4" />
-                    <span>Opposite Gate 5, Adamasingba, Ibadan, Oyo State</span>
+                    <span>9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo</span>
                   </div>
                   <p className="text-sm text-gray-300 mb-4">{event.description}</p>
                   <p className="text-sm font-medium text-primary">{event.time}</p>

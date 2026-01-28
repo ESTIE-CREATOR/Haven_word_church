@@ -26,25 +26,31 @@ const Contact = () => {
     }));
   };
 
+  // Google Form URL for contact submissions
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdhya9IHH_bYPTdivFP_lHVBEv_iHTk4KXNBb5QbUOvnT5xEg/viewform";
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting us. We'll respond shortly.",
-      });
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
-      });
-    }, 1500);
+    // Open Google Form in new tab
+    window.open(GOOGLE_FORM_URL, '_blank');
+    
+    toast({
+      title: "Opening Form",
+      description: "Please fill out the Google Form to submit your message. Your submission will be saved automatically.",
+    });
+    
+    setIsSubmitting(false);
+    
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: ""
+    });
   };
 
   return (

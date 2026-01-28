@@ -4,8 +4,25 @@ import Testimonial from "@/components/Testimonial";
 import { Heart, Plus } from "lucide-react";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Testimonies = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
+  // Google Form URL - This form submits directly to your Google Sheet
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdhya9IHH_bYPTdivFP_lHVBEv_iHTk4KXNBb5QbUOvnT5xEg/viewform";
+  
+  // Google Spreadsheet URL - View submissions here
+  const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/12x7QjJvLNkCKmlp8inLKjdudn98aq_ZAu0G-rbFdFlE/edit?resourcekey=&gid=694486580#gid=694486580";
   const testimonies = [
     {
       name: "Sarah Johnson",
@@ -92,13 +109,67 @@ const Testimonies = () => {
                 <p className="text-gray-300 mb-6">
                   Has God done something amazing in your life? We'd love to hear your testimony and share it with our church family. Your story can inspire and encourage others.
                 </p>
-                <InteractiveHoverButton text="Submit Your Testimony" className="bg-secondary hover:bg-secondary/90 border-secondary" />
+                <InteractiveHoverButton 
+                  text="Submit Your Testimony" 
+                  className="bg-secondary hover:bg-secondary/90 border-secondary"
+                  onClick={() => setIsDialogOpen(true)}
+                />
               </CardContent>
             </Card>
           </div>
         </section>
       </main>
       <Footer />
+
+      {/* Testimony Submission Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="bg-gray-900 border-gray-800 text-white max-w-2xl [&>button]:text-white">
+          <DialogHeader>
+            <DialogTitle className="text-white text-2xl">Share Your Testimony</DialogTitle>
+            <DialogDescription className="text-gray-300">
+              Click the button below to open the Google Form and submit your testimony. Your submission will be automatically saved to a spreadsheet.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-6 py-4">
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
+              <p className="text-sm text-gray-300 mb-3">
+                <strong className="text-white">How to Submit:</strong>
+              </p>
+              <p className="text-sm text-gray-300 mb-3">
+                Click "Submit Testimony" to open the Google Form. Fill out the form with your testimony details, and your submission will automatically be saved to our spreadsheet.
+              </p>
+              <p className="text-xs text-gray-400 mt-3">
+                <strong>Tip:</strong> You can also view all submissions by clicking "View Spreadsheet"
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href={GOOGLE_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1"
+              >
+                <InteractiveHoverButton 
+                  text="Submit Testimony" 
+                  className="w-full bg-primary hover:bg-primary/90 border-primary"
+                />
+              </a>
+              <InteractiveHoverButton 
+                text="View Spreadsheet" 
+                className="flex-1 border-gray-700"
+                onClick={() => window.open(GOOGLE_SHEET_URL, '_blank')}
+              />
+              <InteractiveHoverButton 
+                text="Close" 
+                className="flex-1 border-gray-700"
+                onClick={() => setIsDialogOpen(false)}
+              />
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

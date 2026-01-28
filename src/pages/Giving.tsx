@@ -75,19 +75,19 @@ const Giving = () => {
           <div className="container-custom">
             <Card className="max-w-2xl mx-auto bg-gray-900 border-gray-800">
               <CardContent className="p-8">
-                <h2 className="heading-md text-center mb-6">Bank Account Details</h2>
+                <h2 className="heading-md text-center mb-6 text-white">Bank Account Details</h2>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-3 border-b">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-700">
                     <span className="font-medium text-gray-300">Account Name:</span>
-                    <span className="text-white">Haven Word Church</span>
+                    <span className="text-white font-semibold">Haven Word Church</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-700">
                     <span className="font-medium text-gray-300">Account Number:</span>
-                    <span className="text-white">0275817169</span>
+                    <span className="text-white font-semibold">0275817169</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-700">
                     <span className="font-medium text-gray-300">Bank Name:</span>
-                    <span className="text-white">Wema Bank Plc</span>
+                    <span className="text-white font-semibold">Wema Bank Plc</span>
                   </div>
                 </div>
                 <p className="text-sm text-gray-300 mt-6 text-center">
