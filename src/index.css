@@ -50,9 +50,17 @@
     @apply border-border;
   }
 
+  html {
+    @apply bg-black;
+  }
+
   body {
-    @apply bg-background text-foreground text-sm;
+    @apply bg-black text-white text-sm;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  #root {
+    @apply bg-black min-h-screen;
   }
 
   h1, h2, h3, h4, h5, h6 {

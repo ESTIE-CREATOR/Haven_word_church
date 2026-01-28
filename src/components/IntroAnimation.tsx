@@ -26,6 +26,10 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
         onComplete: () => {
           setIsComplete(true);
           onComplete?.();
+          // Ensure pointer events are disabled after animation completes
+          if (containerRef.current) {
+            containerRef.current.style.pointerEvents = 'none';
+          }
         },
       });
 
@@ -63,6 +67,12 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
         opacity: 0,
         duration: 1,
         ease: "power2.in",
+        onComplete: () => {
+          // Disable pointer events when fade out completes
+          if (containerRef.current) {
+            containerRef.current.style.pointerEvents = 'none';
+          }
+        },
       });
     });
 
@@ -74,7 +84,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center pointer-events-auto bg-black"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
     >
       {/* Shader Animation Background */}
       <ShaderAnimation />
