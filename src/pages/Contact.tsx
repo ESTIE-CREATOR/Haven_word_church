@@ -82,7 +82,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-base mb-1 text-white">Church Location</h3>
-                      <p className="text-gray-300">Haven Word Church<br />The Spread City<br />Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
+                      <p className="text-gray-300">Haven Word Church<br />The Spread City<br />9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo</p>
                     </div>
                   </div>
                   
@@ -120,20 +120,6 @@ const Contact = () => {
                           havenwordchurch@gmail.com
                         </a>
                       </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-primary/20 p-3 rounded-full mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1 text-white">Office Hours</h3>
-                      <p className="text-gray-300">Monday - Friday: 9:00 AM - 5:00 PM</p>
-                      <p className="text-gray-300">Saturday: 10:00 AM - 2:00 PM</p>
-                      <p className="text-gray-300">Sunday: 8:00 AM - 1:00 PM</p>
                     </div>
                   </div>
                 </div>
@@ -250,13 +236,29 @@ const Contact = () => {
         </section>
         
         {/* Map Section */}
-        <section className="bg-gray-900">
-          <div className="h-96 w-full bg-gray-800">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-300">Interactive Map Would Be Displayed Here</p>
-                <p className="text-sm text-gray-400 mt-2">Haven Word Church, The Spread City</p>
-              </div>
+        <section className="bg-gray-900 section-padding">
+          <div className="container-custom">
+            <div className="h-96 w-full rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps?q=9VXM+797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Haven Word Church Location"
+              ></iframe>
+            </div>
+            <div className="text-center mt-4">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=9VXM%2B797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline text-sm"
+              >
+                View on Google Maps
+              </a>
             </div>
           </div>
         </section>

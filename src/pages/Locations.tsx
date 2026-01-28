@@ -7,7 +7,7 @@ const Locations = () => {
   const locations = [
     {
       name: "Main Campus - The Spread City",
-      address: "Opposite Gate 5, Adamasingba, Ibadan, Oyo State",
+      address: "9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo",
       phone: "+234 815 888 4938 / +234 907 746 9204",
       email: "havenwordchurch@gmail.com",
       services: [
@@ -15,7 +15,7 @@ const Locations = () => {
         { day: "Wednesday", time: "5:30 PM", type: "Bible Study" },
       ],
       image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800",
-      coordinates: { lat: 7.3775, lng: 3.9470 }, // Approximate coordinates for Adamasingba, Ibadan
+      coordinates: { lat: 7.3775, lng: 3.9470 }, // Coordinates for Akintola Rd, Ibadan
     },
   ];
 
@@ -41,7 +41,7 @@ const Locations = () => {
           <div className="container-custom mb-8">
             <div className="h-96 w-full rounded-lg overflow-hidden shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5!2d3.9470!3d7.3775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjInMzkuMCJOIDPCsDU2JzQ5LjIiRQ!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng"
+                src="https://www.google.com/maps?q=9VXM+797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -53,7 +53,7 @@ const Locations = () => {
             </div>
             <div className="text-center mt-4">
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Haven+Word+Church+Opposite+Gate+5+Adamasingba+Ibadan+Oyo+State"
+                href="https://www.google.com/maps/search/?api=1&query=9VXM%2B797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline text-sm"
@@ -116,7 +116,7 @@ const Locations = () => {
 
                     <div className="mt-6 pt-6 border-t border-gray-700">
                       <a
-                        href={`https://maps.google.com/?q=${encodeURIComponent('Haven Word Church ' + location.address)}`}
+                        href={`https://maps.google.com/?q=${encodeURIComponent(location.address)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
