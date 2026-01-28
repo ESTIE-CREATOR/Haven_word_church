@@ -17,6 +17,7 @@ import Testimonies from "./pages/Testimonies";
 import { lazy, Suspense } from "react";
 const Gallery = lazy(() => import("./pages/Gallery"));
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />

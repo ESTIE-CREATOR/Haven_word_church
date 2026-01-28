@@ -88,7 +88,7 @@ const Testimonies = () => {
                 <div className="mx-auto mb-4 p-4 rounded-full bg-secondary/10 w-fit">
                   <Plus className="h-8 w-8 text-secondary" />
                 </div>
-                <h2 className="heading-md mb-4">Share Your Story</h2>
+                <h2 className="heading-md mb-4 text-white">Share Your Story</h2>
                 <p className="text-gray-300 mb-6">
                   Has God done something amazing in your life? We'd love to hear your testimony and share it with our church family. Your story can inspire and encourage others.
                 </p>

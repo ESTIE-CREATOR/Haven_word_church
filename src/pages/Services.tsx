@@ -72,49 +72,49 @@ const Services = () => {
         {/* Worship Services Section */}
         <section className="section-padding bg-black">
           <div className="container-custom">
-            <h2 className="heading-lg text-center mb-12">Weekly Worship Services</h2>
+            <h2 className="heading-lg text-center mb-12 text-white">Weekly Worship Services</h2>
             
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Sunday Morning Worship</h3>
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-white mb-3">Sunday Morning Worship</h3>
                   <div className="space-y-3 text-gray-300">
-                    <p><strong>Times:</strong> 8:00 AM & 10:30 AM</p>
-                    <p><strong>Location:</strong> Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
+                    <p><strong className="text-white">Times:</strong> 8:00 AM & 10:30 AM</p>
+                    <p><strong className="text-white">Location:</strong> Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
                     <p>Our Sunday services feature inspiring messages, uplifting worship music, and a welcoming community atmosphere.</p>
                   </div>
                 </div>
                 
-                <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Wednesday Bible Study</h3>
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-white mb-3">Wednesday Bible Study</h3>
                   <div className="space-y-3 text-gray-300">
-                    <p><strong>Time:</strong> 7:00 PM</p>
-                    <p><strong>Location:</strong> Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
+                    <p><strong className="text-white">Time:</strong> 7:00 PM</p>
+                    <p><strong className="text-white">Location:</strong> Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
                     <p>Mid-week study focusing on deeper exploration of scripture, discussion, and prayer.</p>
                   </div>
                 </div>
                 
-                <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Youth Fellowship</h3>
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-white mb-3">Youth Fellowship</h3>
                   <div className="space-y-3 text-gray-300">
-                    <p><strong>Time:</strong> Fridays at 6:00 PM</p>
-                    <p><strong>Location:</strong> Youth Center</p>
+                    <p><strong className="text-white">Time:</strong> Fridays at 6:00 PM</p>
+                    <p><strong className="text-white">Location:</strong> Youth Center</p>
                     <p>Engaging program for teens featuring activities, worship, and relevant teachings.</p>
                   </div>
                 </div>
                 
-                <div className="bg-church-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-serif font-semibold text-church-800 mb-3">Children's Church</h3>
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                  <h3 className="text-lg font-serif font-semibold text-white mb-3">Children's Church</h3>
                   <div className="space-y-3 text-gray-300">
-                    <p><strong>Time:</strong> During 10:30 AM Service</p>
-                    <p><strong>Location:</strong> Children's Wing</p>
+                    <p><strong className="text-white">Time:</strong> During 10:30 AM Service</p>
+                    <p><strong className="text-white">Location:</strong> Children's Wing</p>
                     <p>Fun, age-appropriate spiritual learning for children ages 4-12.</p>
                   </div>
                 </div>
               </div>
               
               <div className="mt-10 text-center">
-                <InteractiveHoverButton asChild text="Plan Your Visit" className="bg-church-600 hover:bg-church-700 border-church-600">
+                <InteractiveHoverButton asChild text="Plan Your Visit" className="bg-primary hover:bg-primary/90 border-primary">
                   <Link to="/contact">Plan Your Visit</Link>
                 </InteractiveHoverButton>
               </div>
@@ -125,7 +125,7 @@ const Services = () => {
         {/* Ministries Section */}
         <section className="section-padding bg-gray-900">
           <div className="container-custom">
-            <h2 className="heading-lg text-center mb-12">Our Ministries</h2>
+            <h2 className="heading-lg text-center mb-12 text-white">Our Ministries</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -170,7 +170,7 @@ const Services = () => {
             
             <div className="mt-12 text-center">
               <p className="text-gray-300 mb-4">Interested in joining or learning more about our ministries?</p>
-              <InteractiveHoverButton asChild text="Get Involved" className="border-church-200 text-white">
+              <InteractiveHoverButton asChild text="Get Involved" className="border-gray-600 text-white">
                 <Link to="/contact">Get Involved</Link>
               </InteractiveHoverButton>
             </div>
@@ -180,7 +180,7 @@ const Services = () => {
         {/* Upcoming Events Section */}
         <section className="section-padding bg-black">
           <div className="container-custom">
-            <h2 className="heading-lg text-center mb-12">Upcoming Events</h2>
+            <h2 className="heading-lg text-center mb-12 text-white">Upcoming Events</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {upcomingEvents.map((event, index) => (
@@ -197,7 +197,7 @@ const Services = () => {
             
             <div className="mt-12 text-center">
               <p className="text-gray-300 mb-4">Have questions about our events?</p>
-              <InteractiveHoverButton asChild text="Contact Us" className="bg-church-600 hover:bg-church-700 border-church-600">
+              <InteractiveHoverButton asChild text="Contact Us" className="bg-primary hover:bg-primary/90 border-primary">
                 <Link to="/contact">Contact Us</Link>
               </InteractiveHoverButton>
             </div>

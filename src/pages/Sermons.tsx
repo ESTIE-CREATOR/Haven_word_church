@@ -96,18 +96,18 @@ const Sermons = () => {
                       <li key={index}>
                         <InteractiveHoverButton 
                           text={series}
-                          className="w-full justify-start text-left hover:bg-church-100 hover:text-church-800 border-transparent"
+                          className="w-full justify-start text-left hover:bg-gray-800 hover:text-white border-transparent text-gray-300"
                         />
                       </li>
                     ))}
                   </ul>
                   
-                  <div className="mt-8 border-t border-gray-200 pt-6">
+                  <div className="mt-8 border-t border-gray-700 pt-6">
                     <h3 className="text-lg font-serif font-semibold text-white mb-4">Looking For</h3>
                     <div className="space-y-2">
-                      <InteractiveHoverButton text="Recent Sermons" className="w-full justify-start text-left border-church-200" />
-                      <InteractiveHoverButton text="Most Popular" className="w-full justify-start text-left border-church-200" />
-                      <InteractiveHoverButton text="Special Events" className="w-full justify-start text-left border-church-200" />
+                      <InteractiveHoverButton text="Recent Sermons" className="w-full justify-start text-left border-gray-700 text-gray-300" />
+                      <InteractiveHoverButton text="Most Popular" className="w-full justify-start text-left border-gray-700 text-gray-300" />
+                      <InteractiveHoverButton text="Special Events" className="w-full justify-start text-left border-gray-700 text-gray-300" />
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const Sermons = () => {
               
               {/* Main Content */}
               <div className="lg:w-3/4">
-                <h2 className="heading-md mb-6">Recent Sermons</h2>
+                <h2 className="heading-md mb-6 text-white">Recent Sermons</h2>
                 
                 <div className="space-y-6">
                   {sermons.map((sermon, index) => (
@@ -132,7 +132,7 @@ const Sermons = () => {
                 </div>
                 
                 <div className="mt-10 flex justify-center">
-                  <InteractiveHoverButton text="Load More Sermons" className="border-church-200" />
+                  <InteractiveHoverButton text="Load More Sermons" className="border-gray-700 text-gray-300" />
                 </div>
               </div>
             </div>
@@ -140,16 +140,16 @@ const Sermons = () => {
         </section>
         
         {/* Call to Action */}
-        <section className="py-16 bg-church-50">
+        <section className="py-16 bg-gray-900">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="heading-md mb-4">Join Us For Our Next Service</h2>
+              <h2 className="heading-md mb-4 text-white">Join Us For Our Next Service</h2>
               <p className="text-lg text-gray-300 mb-6">
                 Experience these messages in person. We'd love to welcome you to our church community!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <InteractiveHoverButton text="Service Times" className="bg-church-600 hover:bg-church-700 border-church-600" />
-                <InteractiveHoverButton text="Subscribe to Podcast" className="border-church-200 text-white" />
+                <InteractiveHoverButton text="Service Times" className="bg-primary hover:bg-primary/90 border-primary" />
+                <InteractiveHoverButton text="Subscribe to Podcast" className="border-gray-700 text-white" />
               </div>
             </div>
           </div>
