@@ -1,33 +1,68 @@
 import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
-import { Video, Headphones, Calendar } from "lucide-react";
+import { Video, Headphones, Calendar, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { useState, useEffect } from "react";
+import { fetchYouTubeVideos, YouTubeVideo } from "@/services/youtube";
 
 const Messages = () => {
-  const videoMessages = [
-    {
-      title: "The Power of Faith",
-      pastor: "Pastor Anthonia Amadi",
-      date: "January 7, 2024",
-      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-      duration: "45:30",
-    },
-    {
-      title: "Walking in Purpose",
-      pastor: "Pastor Anthonia Amadi",
-      date: "December 31, 2023",
-      thumbnail: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400",
-      duration: "52:15",
-    },
-    {
-      title: "The Gift of Grace",
-      pastor: "Pastor Anthonia Amadi",
-      date: "December 24, 2023",
-      thumbnail: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400",
-      duration: "38:45",
-    },
-  ];
+  const [videos, setVideos] = useState<YouTubeVideo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [nextPageToken, setNextPageToken] = useState<string | undefined>();
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [displayedCount, setDisplayedCount] = useState(6); // Show 6 videos initially
+
+  useEffect(() => {
+    loadVideos();
+  }, []);
+
+  const loadVideos = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const result = await fetchYouTubeVideos(12);
+      setVideos(result.videos);
+      setNextPageToken(result.nextPageToken);
+      setDisplayedCount(6); // Reset to initial display count
+    } catch (err) {
+      console.error("Error loading videos:", err);
+      setError(err instanceof Error ? err.message : "Failed to load videos. Please check your YouTube API configuration.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadMoreVideos = async () => {
+    if (!nextPageToken || loadingMore) return;
+
+    try {
+      setLoadingMore(true);
+      const result = await fetchYouTubeVideos(12, nextPageToken);
+      setVideos((prev) => [...prev, ...result.videos]);
+      setNextPageToken(result.nextPageToken);
+      setDisplayedCount((prev) => prev + 6); // Show 6 more videos
+    } catch (err) {
+      console.error("Error loading more videos:", err);
+      setError(err instanceof Error ? err.message : "Failed to load more videos.");
+    } finally {
+      setLoadingMore(false);
+    }
+  };
+
+  const handleViewMore = () => {
+    if (displayedCount < videos.length) {
+      // Show more videos from already loaded list
+      setDisplayedCount((prev) => Math.min(prev + 6, videos.length));
+    } else if (nextPageToken) {
+      // Load more videos from YouTube
+      loadMoreVideos();
+    }
+  };
+
+  const displayedVideos = videos.slice(0, displayedCount);
+  const hasMoreVideos = displayedCount < videos.length || nextPageToken;
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
@@ -54,34 +89,91 @@ const Messages = () => {
               <h2 className="heading-md text-white">Video Messages</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {videoMessages.map((message, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow bg-gray-900 border-gray-800">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={message.thumbnail}
-                      alt={message.title}
-                      className="w-full h-full object-cover"
+            {loading && (
+              <div className="flex flex-col items-center justify-center py-12">
+                <Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
+                <p className="text-gray-300">Loading videos...</p>
+              </div>
+            )}
+
+            {error && (
+              <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-6 mb-8">
+                <p className="text-red-300 text-center">{error}</p>
+                <p className="text-gray-400 text-sm text-center mt-2">
+                  Please make sure you have set VITE_YOUTUBE_CHANNEL_ID or VITE_YOUTUBE_PLAYLIST_ID in your .env file
+                </p>
+              </div>
+            )}
+
+            {!loading && !error && videos.length === 0 && (
+              <div className="text-center py-12">
+                <Video className="h-12 w-12 text-gray-600 mx-auto mb-4" />
+                <p className="text-gray-400">No videos found. Please check your YouTube configuration.</p>
+              </div>
+            )}
+
+            {!loading && displayedVideos.length > 0 && (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {displayedVideos.map((video) => (
+                    <Card key={video.id} className="overflow-hidden hover:shadow-lg transition-shadow bg-gray-900 border-gray-800">
+                      <div className="relative h-48 overflow-hidden group cursor-pointer">
+                        <a
+                          href={video.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full h-full"
+                        >
+                          <img
+                            src={video.thumbnail}
+                            alt={video.title}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Video className="h-12 w-12 text-white" />
+                          </div>
+                          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                            {video.duration}
+                          </div>
+                        </a>
+                      </div>
+                      <CardContent className="p-4 bg-gray-900">
+                        <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-white">{video.title}</h3>
+                        <div className="flex items-center gap-2 text-sm text-gray-300 mb-3">
+                          <Calendar className="h-4 w-4" />
+                          <span>{video.publishedAt}</span>
+                        </div>
+                        <p className="text-sm text-gray-300 mb-4">{video.channelTitle}</p>
+                        <InteractiveHoverButton
+                          asChild
+                          text="Watch Now"
+                          className="w-full"
+                        >
+                          <a
+                            href={video.videoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Watch Now
+                          </a>
+                        </InteractiveHoverButton>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {hasMoreVideos && (
+                  <div className="flex justify-center mt-8">
+                    <InteractiveHoverButton
+                      onClick={handleViewMore}
+                      text={loadingMore ? "Loading..." : "View More"}
+                      className="px-8 py-3"
+                      disabled={loadingMore}
                     />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <Video className="h-12 w-12 text-white" />
-                    </div>
-                    <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                      {message.duration}
-                    </div>
                   </div>
-                  <CardContent className="p-4 bg-gray-900">
-                    <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-white">{message.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-300 mb-3">
-                      <Calendar className="h-4 w-4" />
-                      <span>{message.date}</span>
-                    </div>
-                    <p className="text-sm text-gray-300 mb-4">{message.pastor}</p>
-                    <InteractiveHoverButton text="Watch Now" className="w-full" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                )}
+              </>
+            )}
           </div>
         </section>
 
