@@ -12,11 +12,6 @@ The goal of this project was to create a simple, welcoming, and responsive websi
 - Clean and accessible navigation
 - User-friendly layout for visitors
 
-## Technologies Used
-- HTML5
-- CSS3
-- JavaScript
-- Responsive Web Design
 
 ## My Role
 - Designed and developed the website layout
