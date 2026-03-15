@@ -13,7 +13,7 @@ interface EventCardProps {
 
 const EventCard = ({ title, date, time, description, image }: EventCardProps) => {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-gray-900 border-gray-800">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-card border-border">
       {image && (
         <div className="h-48 overflow-hidden">
           <img 
@@ -23,15 +23,15 @@ const EventCard = ({ title, date, time, description, image }: EventCardProps) =>
           />
         </div>
       )}
-      <CardContent className="pt-6 bg-gray-900">
+      <CardContent className="pt-6">
         <div className="flex items-center text-primary mb-2">
           <CalendarIcon className="h-4 w-4 mr-2" />
-          <span className="text-sm text-gray-300">{date} • {time}</span>
+          <span className="text-sm text-muted-foreground">{date} • {time}</span>
         </div>
-        <h3 className="text-lg font-serif font-medium mb-2 text-white">{title}</h3>
-        <p className="text-gray-300">{description}</p>
+        <h3 className="text-lg font-serif font-medium mb-2 text-foreground">{title}</h3>
+        <p className="text-muted-foreground">{description}</p>
       </CardContent>
-      <CardFooter className="bg-gray-900">
+      <CardFooter>
         <InteractiveHoverButton text="Learn More" className="w-full" />
       </CardFooter>
     </Card>

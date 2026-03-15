@@ -5,10 +5,6 @@ import { Link, useLocation } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { createPortal } from "react-dom"
 
-/**
- * Alternative Header component using the Tubelight Navbar
- * Shows hamburger menu on mobile, navbar on desktop
- */
 export function TubelightHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
@@ -29,10 +25,7 @@ export function TubelightHeader() {
     } else {
       document.body.style.overflow = ''
     }
-
-    return () => {
-      document.body.style.overflow = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [mobileMenuOpen])
 
   return (
@@ -43,7 +36,7 @@ export function TubelightHeader() {
       </div>
 
       {/* Mobile: Hamburger Menu */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 overflow-x-hidden max-w-full">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary/80 overflow-x-hidden max-w-full">
         <div className="flex items-center justify-between px-2 sm:px-4 py-3 max-w-full">
           <Link to="/" className="flex items-center gap-1 sm:gap-2 min-w-0 flex-shrink">
             <img 
@@ -51,12 +44,12 @@ export function TubelightHeader() {
               alt="Haven Word Church Logo"
               className="h-8 w-8 rounded-full flex-shrink-0"
             />
-            <span className="font-bold text-white text-xs sm:text-sm truncate">Haven Word Church</span>
+            <span className="font-bold text-primary-foreground text-xs sm:text-sm truncate">Haven Word Church</span>
           </Link>
           
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="p-2 text-primary-foreground hover:bg-primary-foreground/10 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -71,7 +64,7 @@ export function TubelightHeader() {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen ? createPortal(
         <div
-          className="fixed inset-0 z-40 bg-black/95 backdrop-blur-md pt-16"
+          className="fixed inset-0 z-40 bg-primary/95 backdrop-blur-md pt-16"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div className="container mx-auto py-6 px-4">
@@ -86,8 +79,8 @@ export function TubelightHeader() {
                     to={item.url}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center gap-3 py-4 px-4 text-base font-medium text-white/70 hover:text-white transition-colors border-b border-white/10",
-                      isActive && "text-white bg-white/10"
+                      "flex items-center gap-3 py-4 px-4 text-base font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors border-b border-primary-foreground/10",
+                      isActive && "text-primary-foreground bg-primary-foreground/10"
                     )}
                   >
                     <Icon className="h-5 w-5" />
