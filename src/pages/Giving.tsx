@@ -25,26 +25,26 @@ const Giving = () => {
 
 
         {/* Bank Details Section */}
-        <section className="section-padding bg-gray-900">
+        <section className="section-padding bg-muted">
           <div className="container-custom">
-            <Card className="max-w-2xl mx-auto bg-gray-900 border-gray-800">
+            <Card className="max-w-2xl mx-auto bg-card border-border">
               <CardContent className="p-8">
-                <h2 className="heading-md text-center mb-6 text-white">Bank Account Details</h2>
+                <h2 className="heading-md text-center mb-6 text-foreground">Bank Account Details</h2>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-3 border-b border-gray-700">
-                    <span className="font-medium text-gray-300">Account Name:</span>
-                    <span className="text-white font-semibold">Haven Word Church</span>
+                  <div className="flex justify-between items-center py-3 border-b border-border">
+                    <span className="font-medium text-muted-foreground">Account Name:</span>
+                    <span className="text-foreground font-semibold">Haven Word Church</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-700">
-                    <span className="font-medium text-gray-300">Account Number:</span>
-                    <span className="text-white font-semibold">0275817169</span>
+                  <div className="flex justify-between items-center py-3 border-b border-border">
+                    <span className="font-medium text-muted-foreground">Account Number:</span>
+                    <span className="text-foreground font-semibold">0275817169</span>
                   </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-700">
-                    <span className="font-medium text-gray-300">Bank Name:</span>
-                    <span className="text-white font-semibold">Wema Bank Plc</span>
+                  <div className="flex justify-between items-center py-3 border-b border-border">
+                    <span className="font-medium text-muted-foreground">Bank Name:</span>
+                    <span className="text-foreground font-semibold">Wema Bank Plc</span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-300 mt-6 text-center">
+                <p className="text-sm text-muted-foreground mt-6 text-center">
                   Please include your name and "Offering" in the transfer reference
                 </p>
               </CardContent>
