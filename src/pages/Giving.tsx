@@ -1,6 +1,6 @@
 import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
-import { Heart, CreditCard, Smartphone, Building2 } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
