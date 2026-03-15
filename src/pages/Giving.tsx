@@ -5,30 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const Giving = () => {
-  const givingMethods = [
-    {
-      icon: CreditCard,
-      title: "Online Giving",
-      description: "Give securely online using your credit or debit card",
-      action: "Give Online",
-      color: "text-primary",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Transfer",
-      description: "Send your offering via bank transfer or mobile money",
-      action: "View Account Details",
-      color: "text-green-600",
-    },
-    {
-      icon: Building2,
-      title: "Bank Transfer",
-      description: "Direct bank transfer to our church account",
-      action: "View Bank Details",
-      color: "text-purple-600",
-    },
-  ];
-
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
       <TubelightHeader />
