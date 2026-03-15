@@ -8,40 +8,40 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 26% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 26% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 26% 14%;
 
-    --primary: 217 91% 60%;
+    --primary: 233 50% 36%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 14 90% 53%;
+    --secondary: 30 87% 54%;
     --secondary-foreground: 0 0% 100%;
 
-    --accent: 45 93% 47%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent: 35 90% 61%;
+    --accent-foreground: 220 26% 14%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 20% 97%;
+    --muted-foreground: 220 9% 46%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 47.4% 33.3%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 233 50% 36%;
 
     --radius: 0.5rem;
 
     /* Header/Footer colors */
-    --header-bg: 220 14% 91%;
-    --header-border: 0 0% 0% / 0.1;
-    --footer-bg: 220 14% 91%;
-    --footer-border: 220 13% 78%;
+    --header-bg: 233 50% 36%;
+    --header-border: 233 50% 30%;
+    --footer-bg: 233 50% 36%;
+    --footer-border: 233 50% 30%;
   }
 }
 
@@ -51,19 +51,19 @@
   }
 
   html {
-    @apply bg-black;
+    @apply bg-background;
     overflow-x: hidden;
   }
 
   body {
-    @apply bg-black text-white text-sm;
+    @apply bg-background text-foreground text-sm;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
     max-width: 100vw;
   }
 
   #root {
-    @apply bg-black min-h-screen;
+    @apply bg-background min-h-screen;
     overflow-x: hidden;
     max-width: 100vw;
   }

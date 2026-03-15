@@ -63,7 +63,7 @@ export function NavBar({ items, className }: NavBarProps) {
                   isActive && "bg-white/10 text-white",
                 )}
               >
-                <span className="hidden md:inline">{item.name}</span>
+                <span className="hidden md:inline ml-1">{item.name}</span>
                 <span className="md:hidden">
                   <Icon size={18} strokeWidth={2.5} />
                 </span>

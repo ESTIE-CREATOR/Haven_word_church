@@ -89,8 +89,8 @@ const Testimonies = () => {
                   key={index}
                   name={testimony.name}
                   role={testimony.role}
-                  content={testimony.content}
-                  image={testimony.image}
+                  quote={testimony.content}
+                  imageUrl={testimony.image}
                 />
               ))}
             </div>
