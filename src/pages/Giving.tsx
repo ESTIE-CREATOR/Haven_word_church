@@ -47,28 +47,6 @@ const Giving = () => {
           </div>
         </section>
 
-        {/* Giving Methods */}
-        <section className="section-padding bg-black">
-          <div className="container-custom">
-            <h2 className="heading-lg text-center mb-12 text-white">Ways to Give</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {givingMethods.map((method, index) => {
-                const Icon = method.icon;
-                return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-gray-900 border-gray-800">
-                    <CardContent className="p-8">
-                      <Icon className={`h-12 w-12 mx-auto mb-4 ${method.color}`} />
-                      <h3 className="heading-sm mb-3 text-white">{method.title}</h3>
-                      <p className="text-gray-300 mb-6 text-sm">{method.description}</p>
-                      <InteractiveHoverButton text={method.action} className="w-full" />
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* Bank Details Section */}
         <section className="section-padding bg-gray-900">
