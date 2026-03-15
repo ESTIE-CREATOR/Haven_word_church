@@ -19,7 +19,6 @@ export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation()
   const [isMobile, setIsMobile] = useState(false)
 
-  // Determine active tab based on current route
   const getActiveTab = () => {
     const currentPath = location.pathname
     const activeItem = items.find(item => {
@@ -34,7 +33,6 @@ export function NavBar({ items, className }: NavBarProps) {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
     }
-
     handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
@@ -48,7 +46,7 @@ export function NavBar({ items, className }: NavBarProps) {
       )}
     >
       <div className="flex items-center justify-center gap-4 max-w-7xl mx-auto overflow-x-hidden">
-        <div className="flex items-center gap-4 sm:gap-6 bg-background/5 border border-border backdrop-blur-lg py-2 px-2 sm:px-4 rounded-full shadow-lg overflow-x-hidden max-w-full">
+        <div className="flex items-center gap-4 sm:gap-6 bg-primary/95 border border-primary/80 backdrop-blur-lg py-2 px-2 sm:px-4 rounded-full shadow-lg overflow-x-hidden max-w-full">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name
@@ -59,8 +57,8 @@ export function NavBar({ items, className }: NavBarProps) {
                 to={item.url}
                 className={cn(
                   "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors whitespace-nowrap flex items-center justify-center",
-                  "text-white/90 hover:text-white",
-                  isActive && "bg-white/10 text-white",
+                  "text-primary-foreground/80 hover:text-primary-foreground",
+                  isActive && "bg-primary-foreground/10 text-primary-foreground",
                 )}
               >
                 <span className="hidden md:inline ml-1">{item.name}</span>
@@ -70,7 +68,7 @@ export function NavBar({ items, className }: NavBarProps) {
                 {isActive && (
                   <motion.div
                     layoutId="lamp"
-                    className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
+                    className="absolute inset-0 w-full bg-primary-foreground/5 rounded-full -z-10"
                     initial={false}
                     transition={{
                       type: "spring",
@@ -78,10 +76,10 @@ export function NavBar({ items, className }: NavBarProps) {
                       damping: 30,
                     }}
                   >
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-amber-400 rounded-t-full shadow-[0_0_10px_rgba(251,191,36,0.8)]">
-                      <div className="absolute w-12 h-6 bg-amber-400/40 rounded-full blur-md -top-2 -left-2" />
-                      <div className="absolute w-8 h-6 bg-amber-400/40 rounded-full blur-md -top-1" />
-                      <div className="absolute w-4 h-4 bg-amber-400/40 rounded-full blur-sm top-0 left-2" />
+                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-accent rounded-t-full shadow-[0_0_10px_hsl(var(--accent)/0.8)]">
+                      <div className="absolute w-12 h-6 bg-accent/40 rounded-full blur-md -top-2 -left-2" />
+                      <div className="absolute w-8 h-6 bg-accent/40 rounded-full blur-md -top-1" />
+                      <div className="absolute w-4 h-4 bg-accent/40 rounded-full blur-sm top-0 left-2" />
                     </div>
                   </motion.div>
                 )}
