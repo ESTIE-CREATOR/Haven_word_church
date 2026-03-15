@@ -20,12 +20,12 @@ const LeadershipSection = () => {
   ];
 
   return (
-    <section className="bg-black section-padding">
+    <section className="bg-muted section-padding">
       <div className="container-custom">
         <MotionInView>
           <div className="text-center mb-12">
-            <h2 className="heading-lg text-white mb-4">Our Leadership</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="heading-lg text-foreground mb-4">Our Leadership</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Meet the dedicated leaders who guide our church family with wisdom, passion, and love.
                   </p>
                 </div>

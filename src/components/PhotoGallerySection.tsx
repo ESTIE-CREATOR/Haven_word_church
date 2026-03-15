@@ -49,11 +49,11 @@ const PhotoGallerySection = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-gray-900 to-black section-padding">
+      <section className="bg-background section-padding">
         <div className="container-custom">
           <MotionInView duration={0.8} className="text-center mb-6 sm:mb-8 md:mb-12">
-            <h2 className="heading-lg text-white">Haven Family</h2>
-            <p className="text-gray-300 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+            <h2 className="heading-lg text-foreground">Haven Family</h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
               Experience the joy, fellowship, and worship at Haven Word Church
             </p>
           </MotionInView>
@@ -90,24 +90,13 @@ const PhotoGallerySection = () => {
                   className="w-full h-auto max-h-[90vh] object-contain"
                 />
                 
-                {/* Navigation Buttons */}
                 <button
                   onClick={prevImage}
                   className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors z-10"
                   aria-label="Previous image"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 
@@ -116,24 +105,13 @@ const PhotoGallerySection = () => {
                   className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors z-10"
                   aria-label="Next image"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
               </div>
             )}
             
-            {/* Image Counter */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/50 text-white text-sm">
               {currentIndex + 1} / {churchPhotos.length}
             </div>
