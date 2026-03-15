@@ -10,13 +10,13 @@ const Giving = () => {
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gray-900 text-white py-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200')] bg-cover bg-center opacity-30"></div>
+        <section className="relative bg-primary text-primary-foreground py-20">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200')] bg-cover bg-center opacity-20"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
-              <Heart className="h-16 w-16 mx-auto mb-6 text-secondary" />
+              <Heart className="h-16 w-16 mx-auto mb-6 text-accent" />
               <h1 className="text-2xl md:text-3xl font-serif font-bold mb-6">Give Generously</h1>
-              <p className="text-base md:text-lg text-gray-100">
+              <p className="text-base md:text-lg text-primary-foreground/90">
                 "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7
               </p>
             </div>
