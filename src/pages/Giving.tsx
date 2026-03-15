@@ -53,14 +53,14 @@ const Giving = () => {
         </section>
 
         {/* Why Give Section */}
-        <section className="section-padding bg-black">
+        <section className="section-padding bg-background">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="heading-md mb-6 text-white">Why We Give</h2>
-              <p className="text-gray-300 mb-4">
+              <h2 className="heading-md mb-6 text-foreground">Why We Give</h2>
+              <p className="text-muted-foreground mb-4">
                 Giving is an act of worship and faith. Your generous contributions help us:
               </p>
-              <ul className="text-left space-y-3 text-gray-300 max-w-xl mx-auto">
+              <ul className="text-left space-y-3 text-muted-foreground max-w-xl mx-auto">
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">•</span>
                   <span>Support our ministry and outreach programs</span>

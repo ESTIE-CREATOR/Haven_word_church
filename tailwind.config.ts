@@ -61,7 +61,7 @@ export default {
 					bg: 'hsl(var(--footer-bg))',
 					border: 'hsl(var(--footer-border))'
 				},
-				church: {
+			church: {
 					50: '#f2f5fa',
 					100: '#e2ebf6',
 					200: '#cbdaee',
@@ -70,16 +70,16 @@ export default {
 					500: '#5f83c4',
 					600: '#4b6ab7',
 					700: '#4058a7',
-					800: '#1e3a8a',
+					800: '#2E3A8C',
 					900: '#323d6e',
-					950: '#0f172a',
+					950: '#1F2937',
 				},
 				gold: {
 					50: '#fbf7ed',
 					100: '#f6ecd3',
 					200: '#ecd8a7',
-					300: '#fbbf24',
-					400: '#d8a148',
+					300: '#F6A545',
+					400: '#F08A24',
 					500: '#c98332',
 					600: '#b66826',
 					700: '#964f21',
@@ -88,9 +88,9 @@ export default {
 					950: '#3a1a0f',
 				},
 				haven: {
-					blue: '#1e3a8a',
-					orange: '#ff6b35',
-					gold: '#fbbf24',
+					blue: '#2E3A8C',
+					orange: '#F08A24',
+					gold: '#F6A545',
 				}
 			},
 			fontFamily: {
