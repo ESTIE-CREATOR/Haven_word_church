@@ -48,7 +48,6 @@ export const AnimatedTestimonials = ({
     return Math.floor(Math.random() * 21) - 10;
   };
 
-  // Safety check: return early if no testimonials (after hooks)
   if (!testimonials || testimonials.length === 0) {
     return null;
   }
@@ -127,13 +126,13 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-foreground">
               {currentTestimonial.name}
             </h3>
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-muted-foreground">
               {currentTestimonial.designation}
             </p>
-            <motion.p className="text-lg text-gray-300 mt-8">
+            <motion.p className="text-lg text-muted-foreground mt-8">
               {currentTestimonial.quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -162,15 +161,15 @@ export const AnimatedTestimonials = ({
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
               onClick={handlePrev}
-              className="h-7 w-7 rounded-full bg-gray-800 flex items-center justify-center group/button hover:bg-gray-700 transition-colors"
+              className="h-7 w-7 rounded-full bg-primary flex items-center justify-center group/button hover:bg-primary/80 transition-colors"
             >
-              <IconArrowLeft className="h-5 w-5 text-white group-hover/button:rotate-12 transition-transform duration-300" />
+              <IconArrowLeft className="h-5 w-5 text-primary-foreground group-hover/button:rotate-12 transition-transform duration-300" />
             </button>
             <button
               onClick={handleNext}
-              className="h-7 w-7 rounded-full bg-gray-800 flex items-center justify-center group/button hover:bg-gray-700 transition-colors"
+              className="h-7 w-7 rounded-full bg-primary flex items-center justify-center group/button hover:bg-primary/80 transition-colors"
             >
-              <IconArrowRight className="h-5 w-5 text-white group-hover/button:-rotate-12 transition-transform duration-300" />
+              <IconArrowRight className="h-5 w-5 text-primary-foreground group-hover/button:-rotate-12 transition-transform duration-300" />
             </button>
           </div>
         </div>

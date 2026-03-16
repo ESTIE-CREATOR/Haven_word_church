@@ -61,7 +61,7 @@ export function NavBar({ items, className }: NavBarProps) {
                   isActive && "bg-primary-foreground/10 text-primary-foreground",
                 )}
               >
-                <span className="hidden md:inline ml-1">{item.name}</span>
+                <span className="hidden md:inline ml-2">{item.name}</span>
                 <span className="md:hidden">
                   <Icon size={18} strokeWidth={2.5} />
                 </span>
