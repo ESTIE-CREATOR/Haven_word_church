@@ -154,6 +154,7 @@ const Sermons = () => {
             </div>
           </div>
         </section>
+      </main>
       <Footer />
     </div>
   );
