@@ -35,12 +35,12 @@ const SermonHighlight = ({
         <div className={`flex-1 p-6 ${!imageUrl ? 'md:w-full' : ''}`}>
           <div className="flex flex-col h-full">
             <div>
-              <div className="text-sm text-church-500 mb-1">
+              <div className="text-sm text-muted-foreground mb-1">
                 {date} • {pastor}
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-2">{title}</h3>
-              <p className="italic text-sm text-gray-500 mb-3">{scripture}</p>
-              <p className="text-gray-600 mb-4 line-clamp-3">{description}</p>
+              <h3 className="text-lg font-serif font-semibold text-foreground mb-2">{title}</h3>
+              <p className="italic text-sm text-muted-foreground mb-3">{scripture}</p>
+              <p className="text-muted-foreground mb-4 line-clamp-3">{description}</p>
             </div>
             <div className="mt-auto">
               <InteractiveHoverButton asChild text="Listen to Sermon">
