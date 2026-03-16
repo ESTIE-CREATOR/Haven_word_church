@@ -22,7 +22,7 @@ const Index = () => {
           <WelcomeSection />
           <ServicesSection />
           <LatestMessagesSection />
-          <PhotoGallerySection />
+          
           <LeadershipSection />
           <TelegramPrayerSection />
           <TestimoniesPreviewSection />

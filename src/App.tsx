@@ -37,11 +37,6 @@ const App = () => (
           <Route path="/giving" element={<Giving />} />
           <Route path="/events" element={<Events />} />
           <Route path="/testimonies" element={<Testimonies />} />
-          <Route path="/gallery" element={
-            <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background text-foreground"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}>
-              <Gallery />
-            </Suspense>
-          } />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
