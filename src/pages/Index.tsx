@@ -7,7 +7,7 @@ import LatestMessagesSection from "@/components/LatestMessagesSection";
 import LeadershipSection from "@/components/LeadershipSection";
 import TelegramPrayerSection from "@/components/TelegramPrayerSection";
 import TestimoniesPreviewSection from "@/components/TestimoniesPreviewSection";
-import PhotoGallerySection from "@/components/PhotoGallerySection";
+
 import WelcomeSection from "@/components/WelcomeSection";
 import IntroAnimation from "@/components/IntroAnimation";
 
