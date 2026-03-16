@@ -71,12 +71,12 @@ const Sermons = () => {
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gray-900 text-white py-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494891848038-7bd202a2afeb')] bg-cover bg-center opacity-30"></div>
+        <section className="relative bg-primary text-primary-foreground py-20">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494891848038-7bd202a2afeb')] bg-cover bg-center opacity-20"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
               <h1 className="text-2xl md:text-3xl font-serif font-bold mb-6">Sermons & Teachings</h1>
-              <p className="text-base md:text-lg text-gray-100">
+              <p className="text-base md:text-lg text-primary-foreground/90">
                 Explore our collection of inspiring messages to deepen your faith and spiritual understanding.
               </p>
             </div>
@@ -84,30 +84,30 @@ const Sermons = () => {
         </section>
 
         {/* Sermon Archive */}
-        <section className="section-padding bg-black">
+        <section className="section-padding bg-background">
           <div className="container-custom">
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Sidebar */}
               <div className="lg:w-1/4">
-                <div className="bg-gray-900 p-6 rounded-lg sticky top-20">
-                  <h3 className="text-lg font-serif font-semibold text-white mb-4">Browse By Series</h3>
+                <div className="bg-muted p-6 rounded-lg sticky top-20">
+                  <h3 className="text-lg font-serif font-semibold text-foreground mb-4">Browse By Series</h3>
                   <ul className="space-y-2">
                     {sermonSeries.map((series, index) => (
                       <li key={index}>
                         <InteractiveHoverButton 
                           text={series}
-                          className="w-full justify-start text-left hover:bg-gray-800 hover:text-white border-transparent text-gray-300"
+                          className="w-full justify-start text-left hover:bg-accent hover:text-foreground border-transparent text-muted-foreground"
                         />
                       </li>
                     ))}
                   </ul>
                   
-                  <div className="mt-8 border-t border-gray-700 pt-6">
-                    <h3 className="text-lg font-serif font-semibold text-white mb-4">Looking For</h3>
+                  <div className="mt-8 border-t border-border pt-6">
+                    <h3 className="text-lg font-serif font-semibold text-foreground mb-4">Looking For</h3>
                     <div className="space-y-2">
-                      <InteractiveHoverButton text="Recent Sermons" className="w-full justify-start text-left border-gray-700 text-gray-300" />
-                      <InteractiveHoverButton text="Most Popular" className="w-full justify-start text-left border-gray-700 text-gray-300" />
-                      <InteractiveHoverButton text="Special Events" className="w-full justify-start text-left border-gray-700 text-gray-300" />
+                      <InteractiveHoverButton text="Recent Sermons" className="w-full justify-start text-left border-border text-muted-foreground" />
+                      <InteractiveHoverButton text="Most Popular" className="w-full justify-start text-left border-border text-muted-foreground" />
+                      <InteractiveHoverButton text="Special Events" className="w-full justify-start text-left border-border text-muted-foreground" />
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const Sermons = () => {
               
               {/* Main Content */}
               <div className="lg:w-3/4">
-                <h2 className="heading-md mb-6 text-white">Recent Sermons</h2>
+                <h2 className="heading-md mb-6 text-foreground">Recent Sermons</h2>
                 
                 <div className="space-y-6">
                   {sermons.map((sermon, index) => (
@@ -132,7 +132,7 @@ const Sermons = () => {
                 </div>
                 
                 <div className="mt-10 flex justify-center">
-                  <InteractiveHoverButton text="Load More Sermons" className="border-gray-700 text-gray-300" />
+                  <InteractiveHoverButton text="Load More Sermons" className="border-border text-muted-foreground" />
                 </div>
               </div>
             </div>
@@ -140,16 +140,16 @@ const Sermons = () => {
         </section>
         
         {/* Call to Action */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-muted">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="heading-md mb-4 text-white">Join Us For Our Next Service</h2>
-              <p className="text-lg text-gray-300 mb-6">
+              <h2 className="heading-md mb-4 text-foreground">Join Us For Our Next Service</h2>
+              <p className="text-lg text-muted-foreground mb-6">
                 Experience these messages in person. We'd love to welcome you to our church community!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <InteractiveHoverButton text="Service Times" className="bg-primary hover:bg-primary/90 border-primary" />
-                <InteractiveHoverButton text="Subscribe to Podcast" className="border-gray-700 text-white" />
+                <InteractiveHoverButton text="Subscribe to Podcast" className="border-border text-foreground" />
               </div>
             </div>
           </div>

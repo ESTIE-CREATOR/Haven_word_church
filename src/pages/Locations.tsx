@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const Locations = () => {
   const locations = [
     {
-      name: "Main Campus - The Spread City",
+      name: "Haven Word Church - The Spread City",
       address: "9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo",
       phone: "+234 815 888 4938 / +234 907 746 9204",
       email: "havenwordchurch@gmail.com",
