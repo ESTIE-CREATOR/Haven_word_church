@@ -87,10 +87,10 @@ const Hero = () => {
 
           {/* Call to Action Buttons */}
           <div className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-2">
-            <InteractiveHoverButton asChild text="Messages" className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10 text-sm sm:text-base">
+            <InteractiveHoverButton asChild text="Messages" className="px-3 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10 text-sm sm:text-base">
               <Link to="/messages">Messages</Link>
             </InteractiveHoverButton>
-            <InteractiveHoverButton asChild text="Contact" className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10 text-sm sm:text-base">
+            <InteractiveHoverButton asChild text="Contact" className="px-3 sm:px-6 md:px-8 py-2 sm:py-3 border-2 border-white/30 text-white bg-transparent hover:bg-white/10 text-sm sm:text-base">
               <Link to="/contact">Contact</Link>
             </InteractiveHoverButton>
           </div>
