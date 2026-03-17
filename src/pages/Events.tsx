@@ -1,4 +1,4 @@
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
 import { Calendar, MapPin } from "lucide-react";

@@ -1,5 +1,5 @@
 
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SermonHighlight from "@/components/SermonHighlight";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";

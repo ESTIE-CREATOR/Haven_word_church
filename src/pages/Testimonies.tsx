@@ -1,4 +1,4 @@
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Testimonial from "@/components/Testimonial";
 import { Heart, Plus } from "lucide-react";

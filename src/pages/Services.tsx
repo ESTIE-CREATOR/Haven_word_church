@@ -1,5 +1,5 @@
 
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Link } from "react-router-dom";
