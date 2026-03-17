@@ -25,7 +25,7 @@ const Testimonies = () => {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
-      <TubelightHeader />
+      <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">
