@@ -1,4 +1,4 @@
-import { MotionInView } from "./MotionInView";
+import MotionInView from "./MotionInView";
 
 const showcaseImages = [
   { src: "/pictures/church_pictures/photo_2026-01-03_01-50-05.jpg", alt: "Church worship service" },
