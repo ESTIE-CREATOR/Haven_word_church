@@ -22,7 +22,7 @@ const ServicesSection = () => {
             <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30 bg-card">
               <div className="relative h-64 md:h-80 overflow-hidden">
                 <img
-                  src="/pictures/services_fliers/sunday.jpg"
+                  src="/pictures/services_fliers/sunday_service_flier .jpg"
                   alt="Sunday Service"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

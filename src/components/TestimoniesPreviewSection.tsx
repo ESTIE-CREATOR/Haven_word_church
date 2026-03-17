@@ -22,7 +22,13 @@ const TestimoniesPreviewSection = () => {
               <Link to="/testimonies">Read Testimonies</Link>
             </InteractiveHoverButton>
             <InteractiveHoverButton asChild text="Share Your Story">
-              <Link to="/testimonies/share">Share Your Story</Link>
+              <a
+  href="https://docs.google.com/forms/d/e/1FAIpQLSfg8h91rGWGJwjCglNvV_3LT-U3znbQAyeKuy2-TzzeHJYwjA/viewform?usp=publish-editor"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+Share Your Story
+</a>
             </InteractiveHoverButton>
           </div>
         </MotionInView>

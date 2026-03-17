@@ -5,12 +5,13 @@ import { Calendar, MapPin } from "lucide-react";
 
 const Events = () => {
   const upcomingEvents = [
-    { title: "Daily with Jesus", date: "Daily", time: "Various Times", description: "Join us daily for prayer, worship, and fellowship with Jesus.", image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600" },
-    { title: "Burning Hearts Submit", date: "Annual Retreat", time: "Once a Year", description: "A powerful retreat that holds once a year for spiritual renewal and transformation.", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" },
-    { title: "Soul Winners Conference", date: "Annual Camp", time: "Once a Year", description: "A transformative camp that holds once a year, equipping believers to win souls for Christ.", image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600" },
-    { title: "Church Anniversary", date: "March 21st", time: "Annually", description: "Join us every year on March 21st as we celebrate God's faithfulness and the growth of our church family.", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" },
-    { title: "Monthly 6 Hours with Jesus (Teenagers)", date: "Monthly", time: "6 Hours", description: "A special monthly event for teenagers - 6 hours dedicated to worship, teaching, and fellowship with Jesus.", image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600" },
-    { title: "Church Prays", date: "Month End", time: "Monthly", description: "Join us every month end for corporate prayer and intercession for our church and community.", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" },
+    { title: "Church Anniversary", date: "March 20, 2026.", time: "Once a Year", description: "Join us as we celebrate another year of God’s grace, growth, and transformation.", image: "/pictures/events_page _fliers/anniversary_flier.jpg" },
+    { title: "Daily with Jesus", date: "June, 2026.", time: "Once a Year", description: "Join us daily for prayer, worship, and fellowship with Jesus.", image: "/pictures/events_page _fliers/Daily With Jesus banner.png"},
+    { title: "Burning Hearts Submit", date: "April, 2026.", time: "Once a Year", description: "A powerful retreat that holds once a year for spiritual renewal and transformation.", image: "/pictures/events_page _fliers/burning heart submit.jpg" },
+    { title: "Soul Winners Conference", date: "December, 2026.", time: "Once a Year", description: "A transformative camp that holds once a year, equipping believers to win souls for Christ.", image: "/pictures/events_page _fliers/496947425_9802487696509088_2913698270647924602_n.jpg" },
+    { title: "Monthly 6 Hours with Jesus (Teenagers)", date: "Monthly", time: "6 Hours", description: "A special monthly event for teenagers - 6 hours dedicated to worship, teaching, and fellowship with Jesus.", image: "/pictures/events_page _fliers/588501720_122144197112893788_8804863929633027602_n.jpg" },
+    { title: "Church Prays", date: "Month End", time: "Monthly", description: "Join us every month end for corporate prayer and intercession for our church and community.", image: "/pictures/events_page _fliers/5892985612095130962_120.jpg" },
+    { title: "Ibadan Miracle Crusade", date: "October, 2026", time: "Monthly", description: "Join us every month end for corporate prayer and intercession for our church and community.", image: "/pictures/events_page _fliers/IMC.jpg" },
   ];
 
   const regularEvents = [
@@ -24,7 +25,7 @@ const Events = () => {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200')] bg-cover bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-[url('/pictures/head/hero.jpg')] bg-cover bg-center opacity-20"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
               <Calendar className="h-16 w-16 mx-auto mb-6" />

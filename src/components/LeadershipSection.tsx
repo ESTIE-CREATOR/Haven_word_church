@@ -5,17 +5,17 @@ const LeadershipSection = () => {
   const leadership = [
     {
       quote:
-        "Pastor Anthonia Amadi is the founder and lead pastor of Haven Word Church. With a heart for spreading the gospel and building a community of faith, she leads the church with passion, wisdom, and love. Under her leadership, Haven Word Church has grown into a vibrant community known as \"The Spread City.\"",
+        "Pastor Anthonia Ikiseh Amadi (PAA) is a preacher of the gospel of Jesus, who is committed to raising, training and equipping men, women, boys and girls for the high calling of the work of ministry.",
       name: "Pastor Anthonia Amadi",
       designation: "Founder & Lead Pastor",
-      src: "/pictures/leadership/photo_2026-01-07_15-42-31.jpg",
+      src: "/pictures/leadership/pastor's_picture.jpg",
     },
     {
       quote:
         "Pastor Chibuotu Amadi is an ordained pastor at Haven Word Church. With dedication and commitment to ministry, he serves alongside Pastor Anthonia in spreading the Word of God and building a strong foundation of faith within the congregation.",
       name: "Pastor Chibuotu Amadi",
       designation: "Ordained Pastor",
-      src: "/pictures/leadership/photo_2026-01-27_16-34-40.jpg",
+      src: "/pictures/leadership/514686471_23974832428848044_9095779486514453001_n.jpg",
     },
   ];
 

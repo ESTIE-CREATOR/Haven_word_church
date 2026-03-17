@@ -11,16 +11,13 @@ import {
 
 const Testimonies = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdhya9IHH_bYPTdivFP_lHVBEv_iHTk4KXNBb5QbUOvnT5xEg/viewform";
-  const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/12x7QjJvLNkCKmlp8inLKjdudn98aq_ZAu0G-rbFdFlE/edit?resourcekey=&gid=694486580#gid=694486580";
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfg8h91rGWGJwjCglNvV_3LT-U3znbQAyeKuy2-TzzeHJYwjA/viewform?usp=publish-editor";
+  const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1y3TfxUdVTUr29C3VqGeMn6Bt1mqLE2krjwErQtaKMeg/edit?resourcekey&usp=forms_web_b&urp=initialLink#gid=1555231836";
   
   const testimonies = [
-    { name: "Sarah Johnson", role: "Member since 2020", content: "Haven Word Church has been a blessing to my family. The teachings have transformed our lives and the community is so welcoming. God's presence is truly felt here.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" },
-    { name: "Michael Adebayo", role: "Member since 2019", content: "I've experienced tremendous growth in my faith since joining. The Bible study sessions are insightful and the worship is powerful. Thank you, Haven Word Church!", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" },
-    { name: "Grace Okafor", role: "Member since 2021", content: "The prayers answered here are amazing! God has done so much in my life through this church. The leadership is caring and the Word is preached with power.", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200" },
-    { name: "David Thompson", role: "Member since 2018", content: "This is more than a church, it's a family. The support during difficult times has been incredible. I'm grateful for Pastor Anthonia's leadership and vision.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200" },
-    { name: "Blessing Okoro", role: "Member since 2022", content: "The Spread City vision is real! I've seen God move in miraculous ways. The community outreach programs have touched so many lives. Glory to God!", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200" },
-    { name: "James Wilson", role: "Member since 2020", content: "The teachings are practical and life-changing. I've learned to apply God's Word in my daily life. The fellowship here is genuine and uplifting.", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200" },
+    { name: "Alabi Esther", role: "Member since 2021", content: "Haven Word Church has been a blessing to me. The teachings have transformed my life. God's presence is truly here." },
+    { name: "Progress Friday", role: "Member since 2021", content: "I've experienced tremendous growth in my faith since joining. The Bible study sessions are insightful and the worship is powerful. Thank you, Haven Word Church!"},
+    { name: "Odukoya Oluwabukunmi", role: "Member since 2021", content: "I've experienced tremendous growth in my faith since joining. The Bible study sessions are insightful and the worship is powerful. Thank you, Haven Word Church!"},
   ];
 
   return (
@@ -29,7 +26,7 @@ const Testimonies = () => {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200')] bg-cover bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-[url('/pictures/head/605540013_855635000568275_1744267405865813200_n.jpg')]  bg-cover bg-center opacity-20"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
               <Heart className="h-16 w-16 mx-auto mb-6 text-accent" />
@@ -51,7 +48,6 @@ const Testimonies = () => {
                   name={testimony.name}
                   role={testimony.role}
                   quote={testimony.content}
-                  imageUrl={testimony.image}
                 />
               ))}
             </div>
@@ -72,7 +68,7 @@ const Testimonies = () => {
                 </p>
                 <InteractiveHoverButton 
                   text="Submit Your Testimony" 
-                  className="bg-secondary hover:bg-secondary/90 border-secondary"
+                  className="bg-[#2e3889] hover:bg-secondary/90 border-secondary mx-auto"
                   onClick={() => setIsDialogOpen(true)}
                 />
               </CardContent>
@@ -100,16 +96,13 @@ const Testimonies = () => {
               <p className="text-sm text-muted-foreground mb-3">
                 Click "Submit Testimony" to open the Google Form. Fill out the form with your testimony details, and your submission will automatically be saved.
               </p>
-              <p className="text-xs text-muted-foreground mt-3">
-                <strong>Tip:</strong> You can also view all submissions by clicking "View Spreadsheet"
-              </p>
+
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className="flex-1">
                 <InteractiveHoverButton text="Submit Testimony" className="w-full bg-primary hover:bg-primary/90 border-primary" />
               </a>
-              <InteractiveHoverButton text="View Spreadsheet" className="flex-1 border-border" onClick={() => window.open(GOOGLE_SHEET_URL, '_blank')} />
               <InteractiveHoverButton text="Close" className="flex-1 border-border" onClick={() => setIsDialogOpen(false)} />
             </div>
           </div>

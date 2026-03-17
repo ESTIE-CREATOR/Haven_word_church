@@ -28,7 +28,7 @@ const EventCard = ({ title, date, time, description, image }: EventCardProps) =>
           <CalendarIcon className="h-4 w-4 mr-2" />
           <span className="text-sm text-muted-foreground">{date} • {time}</span>
         </div>
-        <h3 className="text-lg font-serif font-medium mb-2 text-foreground">{title}</h3>
+        <h3 className="text-2xl text-[#2e3889] font-serif font-bold mb-2 text-foreground">{title}</h3>
         <p className="text-muted-foreground">{description}</p>
       </CardContent>
       <CardFooter className="mt-auto">

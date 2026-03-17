@@ -39,7 +39,7 @@ const Contact = () => {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492321936769-b49830bc1d1e')] bg-cover bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-[url('/pictures/head/_TAP0021.JPG')] bg-cover bg-center opacity-20"></div>
           <div className="container-custom relative z-10">
             <div className="max-w-2xl mx-auto text-center">
               <h1 className="text-2xl md:text-3xl font-serif font-bold mb-6">Contact Us</h1>

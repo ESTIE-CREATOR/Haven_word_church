@@ -22,50 +22,15 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen overflow-hidden max-w-full">
-      {/* Background Image with Sky and Landscape */}
-      <div className="absolute inset-0">
-        {/* Sky Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-800 via-slate-700 to-slate-600"></div>
-        
-        {/* Cloudy Sky Effect */}
-        <div className="absolute inset-0 opacity-60 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2/3 bg-gradient-to-b from-slate-900/80 via-slate-800/60 to-transparent"></div>
-          <div className="absolute top-20 left-4 sm:left-10 w-64 sm:w-96 h-32 bg-slate-700/40 rounded-full blur-3xl"></div>
-          <div className="absolute top-40 right-4 sm:right-20 w-56 sm:w-80 h-40 bg-slate-600/30 rounded-full blur-3xl"></div>
-          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-56 sm:w-72 h-36 bg-slate-800/50 rounded-full blur-3xl"></div>
-        </div>
-
-        {/* Landscape - Grass/Hills */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-amber-900/40 via-amber-800/30 to-transparent">
-          {/* Grass texture */}
-          <div className="absolute inset-0 opacity-30" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q 10 15, 20 20 T 40 20 T 60 20 T 80 20 T 100 20 L 100 20 L 0 20 Z' fill='%23a78b5b'/%3E%3C/svg%3E")`,
-            backgroundSize: '200px 40px',
-          }}></div>
-        </div>
-
-        {/* Cross Silhouette */}
-        <div className="absolute bottom-1/4 left-1/4 w-2 h-64 bg-slate-900/80 shadow-2xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 -translate-x-1/2 w-32 h-2 bg-slate-900/80 shadow-2xl" style={{ top: 'calc(25% - 64px)' }}></div>
-
-        {/* Town/City Silhouette in Background */}
-        <div className="absolute bottom-1/3 left-0 right-0 h-32 opacity-40 overflow-hidden">
-          {/* Building shapes */}
-          <div className="absolute bottom-0 left-1/4 w-12 sm:w-16 h-20 sm:h-24 bg-slate-900/60"></div>
-          <div className="absolute bottom-0 left-1/3 w-10 sm:w-12 h-24 sm:h-32 bg-slate-900/60"></div>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-16 sm:h-20 bg-slate-900/60"></div>
-          <div className="absolute bottom-0 right-1/4 w-12 sm:w-14 h-24 sm:h-28 bg-slate-900/60"></div>
-          {/* Church spire */}
-          <div className="absolute bottom-0 right-1/3 w-3 sm:w-4 h-32 sm:h-40 bg-slate-900/60"></div>
-          <div className="absolute bottom-32 sm:bottom-36 right-1/3 -translate-x-1/2 w-6 sm:w-8 h-6 sm:h-8 bg-slate-900/60 rotate-45"></div>
-        </div>
-
-        {/* Water/Harbor Effect */}
-        <div className="absolute bottom-1/3 right-0 w-1/4 sm:w-1/4 h-8 bg-slate-900/50"></div>
+       <div className="absolute inset-0">
+        <img
+          src="/pictures/hero/605502457_855635007234941_5452367330643565962_n.jpg"
+          alt="Church worship"
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60" />
       </div>
-
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
 
       {/* Hero Content - Moved down to avoid header */}
       <div className="relative z-20 h-full flex items-center justify-center px-4 md:px-8 lg:px-12 pt-24 overflow-x-hidden">
