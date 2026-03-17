@@ -196,7 +196,7 @@ export async function fetchYouTubeVideos(
   }
 }
 
-// Helper to check if a video is a Short (≤10 minutes / 600 seconds)
+// Helper to check if a video is a Short (≤60 seconds)
 export function isShort(video: YouTubeVideo): boolean {
-  return video.durationSeconds > 0 && video.durationSeconds <= 600;
+  return video.durationSeconds > 0 && video.durationSeconds <= 60;
 }

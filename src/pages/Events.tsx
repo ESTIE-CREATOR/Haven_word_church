@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
 import { Calendar, MapPin } from "lucide-react";
@@ -20,7 +20,7 @@ const Events = () => {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
-      <Header />
+      <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">
