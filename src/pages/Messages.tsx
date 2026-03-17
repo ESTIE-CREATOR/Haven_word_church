@@ -90,7 +90,7 @@ const Messages = () => {
           </div>
         )}
 
-        {/* Long Videos Section */}
+        {/* Long Videos Section - ONLY long videos */}
         {!loading && !error && (
           <section className="section-padding bg-background">
             <div className="container-custom">
@@ -126,7 +126,7 @@ const Messages = () => {
           </section>
         )}
 
-        {/* Shorts Section */}
+        {/* Shorts Section - ONLY shorts */}
         {!loading && !error && shorts.length > 0 && (
           <section className="section-padding bg-muted">
             <div className="container-custom">
