@@ -1,98 +1,92 @@
-import { useState, useEffect } from 'react'
-import { Home, MessageSquare, MapPin, Info, Calendar, DollarSign, Phone, Menu, X } from 'lucide-react'
-import { NavBar } from "@/components/ui/tubelight-navbar"
-import { Link, useLocation } from "react-router-dom"
-import { cn } from "@/lib/utils"
-import { createPortal } from "react-dom"
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Home, MessageSquare, MapPin, Info, Calendar, DollarSign, Phone, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { useScroll } from "@/hooks/use-scroll";
+import { MobileSidebar, HamburgerIcon } from "./MobileSidebar";
+
+const navItems = [
+  { name: "Home", url: "/", icon: Home },
+  { name: "Messages", url: "/messages", icon: MessageSquare },
+  { name: "Locations", url: "/locations", icon: MapPin },
+  { name: "About", url: "/about", icon: Info },
+  { name: "Events", url: "/events", icon: Calendar },
+  { name: "Giving", url: "/giving", icon: DollarSign },
+  { name: "Testimonies", url: "/testimonies", icon: Heart },
+  { name: "Contact", url: "/contact", icon: Phone },
+];
 
 export function TubelightHeader() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const location = useLocation()
-
-  const navItems = [
-    { name: 'Home', url: '/', icon: Home },
-    { name: 'Messages', url: '/messages', icon: MessageSquare },
-    { name: 'Locations', url: '/locations', icon: MapPin },
-    { name: 'About', url: '/about', icon: Info },
-    { name: 'Giving', url: '/giving', icon: DollarSign },
-    { name: 'Events', url: '/events', icon: Calendar },
-    { name: 'Contact', url: '/contact', icon: Phone },
-  ]
-
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
-  }, [mobileMenuOpen])
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation();
+  const scrolled = useScroll(10);
 
   return (
-    <header className="relative">
-      {/* Desktop: Tubelight Navbar */}
-      <div className="hidden md:block">
-        <NavBar items={navItems} />
-      </div>
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          scrolled
+            ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+            : "bg-background/80 backdrop-blur-sm"
+        )}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="/pictures/logo/20260103_114553_0000.png"
+                alt="Haven Word Church Logo"
+                className={cn(
+                  "transition-all duration-300 rounded-full",
+                  scrolled ? "h-9 w-9" : "h-10 w-10"
+                )}
+              />
+              <span className="font-bold text-foreground text-sm md:text-base">
+                Haven Word Church
+              </span>
+            </Link>
 
-      {/* Mobile: Hamburger Menu */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary/80 overflow-x-hidden max-w-full">
-        <div className="flex items-center justify-between px-2 sm:px-4 py-3 max-w-full">
-          <Link to="/" className="flex items-center gap-1 sm:gap-2 min-w-0 flex-shrink">
-            <img 
-              src="/pictures/logo/20260103_114553_0000.png" 
-              alt="Haven Word Church Logo"
-              className="h-8 w-8 rounded-full flex-shrink-0"
-            />
-            <span className="font-bold text-primary-foreground text-xs sm:text-sm truncate">Haven Word Church</span>
-          </Link>
-          
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-primary-foreground hover:bg-primary-foreground/10 rounded-lg transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen ? createPortal(
-        <div
-          className="fixed inset-0 z-40 bg-primary/95 backdrop-blur-md pt-16"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          <div className="container mx-auto py-6 px-4">
-            <nav className="flex flex-col gap-2">
+            {/* Desktop Navigation - Tubelight style */}
+            <nav className="hidden lg:flex items-center gap-1 bg-muted/80 rounded-full px-2 py-1.5">
               {navItems.map((item) => {
-                const Icon = item.icon
-                const isActive = location.pathname === item.url
-                
+                const isActive = location.pathname === item.url;
                 return (
                   <Link
                     key={item.name}
                     to={item.url}
-                    onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center gap-3 py-4 px-4 text-base font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors border-b border-primary-foreground/10",
-                      isActive && "text-primary-foreground bg-primary-foreground/10"
+                      "relative px-4 py-2 text-sm font-medium rounded-full transition-colors whitespace-nowrap",
+                      "text-muted-foreground hover:text-foreground",
+                      isActive && "text-primary"
                     )}
                   >
-                    <Icon className="h-5 w-5" />
-                    <span>{item.name}</span>
+                    <span className="relative z-10">{item.name}</span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="tubelight"
+                        className="absolute inset-0 bg-background rounded-full shadow-sm border border-border -z-0"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      >
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-primary rounded-full shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
+                      </motion.div>
+                    )}
                   </Link>
-                )
+                );
               })}
             </nav>
+
+            {/* Mobile hamburger */}
+            <HamburgerIcon open={sidebarOpen} onClick={() => setSidebarOpen(!sidebarOpen)} />
           </div>
-        </div>,
-        document.body
-      ) : null}
-    </header>
-  )
+        </div>
+      </header>
+
+      {/* Mobile sidebar */}
+      <MobileSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    </>
+  );
 }
