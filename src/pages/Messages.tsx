@@ -1,4 +1,4 @@
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Video, Headphones, Calendar, Loader2, Film } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
