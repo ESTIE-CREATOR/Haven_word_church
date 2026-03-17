@@ -1,5 +1,5 @@
 
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SermonHighlight from "@/components/SermonHighlight";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
@@ -68,7 +68,7 @@ const Sermons = () => {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
-      <TubelightHeader />
+      <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">

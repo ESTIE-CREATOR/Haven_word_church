@@ -1,4 +1,4 @@
-import { TubelightHeader } from "@/components/TubelightHeader";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin, Clock, Phone, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -21,7 +21,7 @@ const Locations = () => {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
-      <TubelightHeader />
+      <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-primary text-primary-foreground py-20">
