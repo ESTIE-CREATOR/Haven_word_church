@@ -27,9 +27,9 @@ const LeadershipSection = () => {
             <h2 className="heading-lg text-foreground mb-4">Our Leadership</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Meet the dedicated leaders who guide our church family with wisdom, passion, and love.
-                  </p>
-                </div>
-          <AnimatedTestimonials testimonials={leadership} autoplay={true} />
+            </p>
+          </div>
+          <AnimatedTestimonials testimonials={leadership} />
         </MotionInView>
       </div>
     </section>

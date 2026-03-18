@@ -38,14 +38,14 @@ const InteractiveHoverButton = React.forwardRef<
       ),
       children: (
         <>
-          <span className="inline-block translate-x-1 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
+          <span className="relative z-20 inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
             {buttonText}
           </span>
-          <div className="absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
+          <div className="absolute top-0 z-20 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
             <span>{buttonText}</span>
             <ArrowRight className="h-4 w-4" />
           </div>
-          <div className="absolute left-[20%] top-[40%] h-2 w-2 scale-[1] rounded-lg bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary"></div>
+          <div className="absolute -left-2 top-[40%] h-2 w-2 scale-[1] rounded-lg bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
         </>
       ),
     });
@@ -61,14 +61,14 @@ const InteractiveHoverButton = React.forwardRef<
       )}
       {...props}
     >
-      <span className="inline-block translate-x-1 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
+      <span className="relative z-20 inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
         {buttonText}
       </span>
-      <div className="absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
+      <div className="absolute top-0 z-20 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
         <span>{buttonText}</span>
         <ArrowRight className="h-4 w-4" />
       </div>
-      <div className="absolute left-[20%] top-[40%] h-2 w-2 scale-[1] rounded-lg bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary"></div>
+      <div className="absolute -left-2 top-[40%] h-2 w-2 scale-[1] rounded-lg bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
     </button>
   );
 });
