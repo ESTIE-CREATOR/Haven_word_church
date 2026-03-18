@@ -24,18 +24,15 @@ const InteractiveHoverButton = React.forwardRef<
 
   const buttonText = getButtonText();
   
+  const baseClasses = "group relative w-auto min-w-[140px] cursor-pointer overflow-hidden rounded-full border border-primary bg-primary px-8 py-2 text-center font-semibold transition-all duration-300 flex items-center justify-center text-primary-foreground hover:bg-primary/90";
+
   if (asChild && React.isValidElement(children)) {
     const childElement = children as React.ReactElement;
     return React.cloneElement(childElement, {
       ...childElement.props,
       ...props,
       ref,
-      className: cn(
-        "group relative w-auto min-w-[120px] cursor-pointer overflow-hidden rounded-full border border-primary bg-primary px-6 py-2 text-center font-semibold transition-all duration-300 flex items-center justify-center text-primary-foreground",
-        "hover:bg-primary/90",
-        className,
-        childElement.props.className,
-      ),
+      className: cn(baseClasses, className, childElement.props.className),
       children: (
         <>
           <span className="relative z-20 inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
@@ -45,7 +42,7 @@ const InteractiveHoverButton = React.forwardRef<
             <span>{buttonText}</span>
             <ArrowRight className="h-4 w-4" />
           </div>
-          <div className="absolute -left-2 top-[40%] h-2 w-2 scale-[1] rounded-lg bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
+          <div className="absolute -left-3 top-[35%] h-2.5 w-2.5 scale-[1] rounded-full bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
         </>
       ),
     });
@@ -54,11 +51,7 @@ const InteractiveHoverButton = React.forwardRef<
   return (
     <button
       ref={ref}
-      className={cn(
-        "group relative w-auto min-w-[120px] cursor-pointer overflow-hidden rounded-full border border-primary bg-primary px-6 py-2 text-center font-semibold transition-all duration-300 flex items-center justify-center text-primary-foreground",
-        "hover:bg-primary/90",
-        className,
-      )}
+      className={cn(baseClasses, className)}
       {...props}
     >
       <span className="relative z-20 inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
@@ -68,7 +61,7 @@ const InteractiveHoverButton = React.forwardRef<
         <span>{buttonText}</span>
         <ArrowRight className="h-4 w-4" />
       </div>
-      <div className="absolute -left-2 top-[40%] h-2 w-2 scale-[1] rounded-lg bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
+      <div className="absolute -left-3 top-[35%] h-2.5 w-2.5 scale-[1] rounded-full bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
     </button>
   );
 });
