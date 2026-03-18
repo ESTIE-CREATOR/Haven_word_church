@@ -42,7 +42,7 @@ const InteractiveHoverButton = React.forwardRef<
             <span>{buttonText}</span>
             <ArrowRight className="h-4 w-4" />
           </div>
-          <div className="absolute -left-3 top-[35%] h-2.5 w-2.5 scale-[1] rounded-full bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
+          <div className="absolute left-1 top-[35%] h-2.5 w-2.5 scale-[1] rounded-full bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
         </>
       ),
     });
@@ -61,7 +61,7 @@ const InteractiveHoverButton = React.forwardRef<
         <span>{buttonText}</span>
         <ArrowRight className="h-4 w-4" />
       </div>
-      <div className="absolute -left-3 top-[35%] h-2.5 w-2.5 scale-[1] rounded-full bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
+      <div className="absolute left-1 top-[35%] h-2.5 w-2.5 scale-[1] rounded-full bg-secondary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-secondary z-10"></div>
     </button>
   );
 });
