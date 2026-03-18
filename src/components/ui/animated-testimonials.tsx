@@ -30,7 +30,7 @@ export const AnimatedTestimonials = ({
           {testimonials.slice(0, 2).map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
-              className="w-full max-w-md overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow duration-300"
+              className="w-full max-w-md overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow duration-300 flex flex-col"
             >
               <div className="h-80 w-full overflow-hidden">
                 <img
