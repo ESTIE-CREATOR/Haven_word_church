@@ -8,7 +8,7 @@ const Locations = () => {
     {
       name: "Haven Word Church - The Spread City",
       address: "9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo",
-      phone: "+234 815 888 4938 / +234 907 746 9204",
+      phone: "+234 816 993 4313 / +234 907 746 9204",
       email: "havenwordchurch@gmail.com",
       services: [
         { day: "Sunday", time: "7:30 AM & 10:00 AM", type: "Worship Service" },
