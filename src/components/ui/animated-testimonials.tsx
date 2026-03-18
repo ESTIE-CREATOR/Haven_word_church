@@ -1,6 +1,3 @@
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 type Testimonial = {
@@ -12,168 +9,55 @@ type Testimonial = {
 
 export const AnimatedTestimonials = ({
   testimonials,
-  autoplay = false,
   className,
 }: {
   testimonials: Testimonial[];
-  autoplay?: boolean;
   className?: string;
 }) => {
-  const [active, setActive] = useState(0);
-
-  const handleNext = useCallback(() => {
-    if (testimonials && testimonials.length > 0) {
-      setActive((prev) => (prev + 1) % testimonials.length);
-    }
-  }, [testimonials]);
-
-  const handlePrev = useCallback(() => {
-    if (testimonials && testimonials.length > 0) {
-      setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    }
-  }, [testimonials]);
-
-  const isActive = (index: number) => {
-    return index === active;
-  };
-
-  useEffect(() => {
-    if (autoplay && testimonials && testimonials.length > 0) {
-      const interval = setInterval(handleNext, 5000);
-      return () => clearInterval(interval);
-    }
-  }, [autoplay, handleNext, testimonials]);
-
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
-  };
-
   if (!testimonials || testimonials.length === 0) {
     return null;
   }
 
-  const currentTestimonial = testimonials[active];
-
-  if (!currentTestimonial) {
-    return null;
-  }
-
   return (
-    <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
-        <div>
-          <div className="relative h-80 w-full">
-            <AnimatePresence>
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.src}
-                  initial={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: -100,
-                    rotate: randomRotateY(),
-                  }}
-                  animate={{
-                    opacity: isActive(index) ? 1 : 0.7,
-                    scale: isActive(index) ? 1 : 0.95,
-                    z: isActive(index) ? 0 : -100,
-                    rotate: isActive(index) ? 0 : randomRotateY(),
-                    zIndex: isActive(index)
-                      ? 999
-                      : testimonials.length + 2 - index,
-                    y: isActive(index) ? 0 : 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: 100,
-                    rotate: randomRotateY(),
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 origin-bottom"
-                >
-                  <img
-                    src={testimonial.src}
-                    alt={testimonial.name}
-                    draggable={false}
-                    className="h-[410px] w-full rounded-3xl object-cover object-center"
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
-        </div>
-        <div className="flex justify-between flex-col py-4">
-          <motion.div
-            key={active}
-            initial={{
-              y: 20,
-              opacity: 0,
-            }}
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            exit={{
-              y: -20,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.2,
-              ease: "easeInOut",
-            }}
-          >
-            <h3 className="text-2xl font-bold text-foreground">
-              {currentTestimonial.name}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {currentTestimonial.designation}
-            </p>
-            <motion.p className="text-lg text-muted-foreground mt-8">
-              {currentTestimonial.quote.split(" ").map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{
-                    filter: "blur(10px)",
-                    opacity: 0,
-                    y: 5,
-                  }}
-                  animate={{
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
-                  className="inline-block"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-            </motion.p>
-          </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
-            <button
-              onClick={handlePrev}
-              className="h-7 w-7 rounded-full bg-primary flex items-center justify-center group/button hover:bg-primary/80 transition-colors"
+    <section
+      className={cn(
+        "w-full flex justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20",
+        className
+      )}
+    >
+      <div className="w-full max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 place-items-center">
+          {testimonials.slice(0, 2).map((testimonial, index) => (
+            <div
+              key={`${testimonial.name}-${index}`}
+              className="w-full max-w-md overflow-hidden rounded-3xl border border-border bg-background shadow-sm transition-shadow duration-300"
             >
-              <IconArrowLeft className="h-5 w-5 text-primary-foreground group-hover/button:rotate-12 transition-transform duration-300" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="h-7 w-7 rounded-full bg-primary flex items-center justify-center group/button hover:bg-primary/80 transition-colors"
-            >
-              <IconArrowRight className="h-5 w-5 text-primary-foreground group-hover/button:-rotate-12 transition-transform duration-300" />
-            </button>
-          </div>
+              <div className="aspect-[4/3] w-full overflow-hidden">
+                <img
+                  src={testimonial.src}
+                  alt={testimonial.name}
+                  draggable={false}
+                  className="h-500 w-full object-cover object-center"
+                />
+              </div>
+
+              <div className="p-5 sm:p-6 text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                  {testimonial.name}
+                </h3>
+
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {testimonial.designation}
+                </p>
+
+                <p className="mt-4 text-sm sm:text-base leading-7 text-muted-foreground">
+                  {testimonial.quote}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
