@@ -47,7 +47,7 @@ const Hero = () => {
           
           {/* Sub Message */}
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mb-8 font-sans px-2 break-words">
-            ...the spread city...
+            The spread city...
           </p>
 
           {/* Call to Action Buttons */}

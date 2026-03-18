@@ -15,7 +15,7 @@ const LeadershipSection = () => {
         "Pastor Chibuotu Amadi is an ordained pastor at Haven Word Church. With dedication and commitment to ministry, he serves alongside Pastor Anthonia in spreading the Word of God and building a strong foundation of faith within the congregation.",
       name: "Pastor Chibuotu Amadi",
       designation: "Ordained Pastor",
-      src: "/pictures/leadership/514686471_23974832428848044_9095779486514453001_n.jpg",
+      src: "/pictures/leadership/5897950319411400254_121.jpg",
     },
   ];
 

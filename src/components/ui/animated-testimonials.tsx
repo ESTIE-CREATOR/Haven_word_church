@@ -32,14 +32,14 @@ export const AnimatedTestimonials = ({
               key={`${testimonial.name}-${index}`}
               className="w-full max-w-md overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow duration-300 flex flex-col"
             >
-              <div className="h-80 w-full overflow-hidden">
-                <img
-                  src={testimonial.src}
-                  alt={testimonial.name}
-                  draggable={false}
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
+              <div className="h-[320px] w-full overflow-hidden sm:h-[360px] sm:h-[500px]">
+            <img
+              src={testimonial.src}
+              alt={testimonial.name}
+              draggable={false}
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
 
               <div className="p-5 sm:p-6 text-center">
                 <h3 className="text-lg sm:text-xl font-bold text-foreground">
