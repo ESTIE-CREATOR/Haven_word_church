@@ -26,7 +26,7 @@ export const AnimatedTestimonials = ({
       )}
     >
       <div className="w-full max-w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 place-items-stretch">
           {testimonials.slice(0, 2).map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
