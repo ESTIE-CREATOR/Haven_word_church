@@ -111,7 +111,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
         ref={subtitleRef}
         className="text-white/80 font-serif italic text-center px-4 mt-4 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl opacity-0 z-10 drop-shadow-lg"
       >
-        the spread city...
+        The Spread City
       </div>
     </div>
   );
