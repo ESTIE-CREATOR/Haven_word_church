@@ -11,8 +11,9 @@ type Direction = "left" | "right" | "up" | "zoom";
 //   - blocks in a section slide in from the left or the right, alternating section by section
 //   - the two sides of a two-column layout come in from opposite sides
 //   - the items of a wider grid rise up one after another
-// To override, put data-reveal-from="left|right|up|zoom"
-// on an element, or data-no-reveal on a section to leave it alone.
+//   - the footer only ever rises, never slides sideways
+// To override, put data-reveal-from="left|right|up|zoom" on an element, or data-no-reveal on a
+// section to leave it alone.
 const ScrollReveal = () => {
   const { pathname } = useLocation();
 
@@ -60,17 +61,21 @@ const ScrollReveal = () => {
         const sectionIndex = sections.findIndex((section) => section.contains(container));
         const side: Direction = sectionIndex % 2 === 0 ? "left" : "right";
         const otherSide: Direction = side === "left" ? "right" : "left";
+        // The footer never slides sideways: everything in it simply rises into place
+        const inFooter = Boolean(container.closest("footer"));
 
         Array.from(container.children).forEach((child) => {
           const isGrid = child.classList.contains("grid") && child.children.length > 1;
           if (!isGrid) {
-            prepare(child, side);
+            prepare(child, inFooter ? "up" : side);
             return;
           }
 
           const columns = getComputedStyle(child).gridTemplateColumns.split(" ").filter(Boolean).length;
           Array.from(child.children).forEach((item, i) => {
-            if (columns <= 2) {
+            if (inFooter) {
+              prepare(item, "up", i % columns);
+            } else if (columns <= 2) {
               // Two columns, or rows stacked in one column: alternate the side they arrive from
               prepare(item, i % 2 === 0 ? side : otherSide, columns === 2 ? i % 2 : 0);
             } else {
