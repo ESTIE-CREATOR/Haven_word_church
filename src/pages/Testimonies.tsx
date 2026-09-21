@@ -21,7 +21,7 @@ const Testimonies = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen flex flex-col overflow-x-clip max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -55,7 +55,7 @@ const Testimonies = () => {
         </section>
 
         {/* Share Your Testimony Section */}
-        <section className="section-padding bg-muted">
+        <section className="section-padding band-orange">
           <div className="container-custom">
             <Card className="max-w-2xl mx-auto bg-card border-border">
               <CardContent className="p-8 text-center">

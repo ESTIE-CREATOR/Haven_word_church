@@ -41,12 +41,12 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 pt-4 px-4 overflow-x-hidden max-w-full",
+        "fixed top-0 left-0 right-0 z-50 pt-4 px-4 overflow-x-clip max-w-full",
         className,
       )}
     >
-      <div className="flex items-center justify-center gap-4 max-w-7xl mx-auto overflow-x-hidden">
-        <div className="flex items-center gap-4 sm:gap-6 bg-primary/95 border border-primary/80 backdrop-blur-lg py-2 px-2 sm:px-4 rounded-full shadow-lg overflow-x-hidden max-w-full">
+      <div className="flex items-center justify-center gap-4 max-w-7xl mx-auto overflow-x-clip">
+        <div className="flex items-center gap-4 sm:gap-6 bg-primary/95 border border-primary/80 backdrop-blur-lg py-2 px-2 sm:px-4 rounded-full shadow-lg overflow-x-clip max-w-full">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name

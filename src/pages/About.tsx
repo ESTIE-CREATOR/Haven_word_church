@@ -5,7 +5,7 @@ import LeadershipSection from "@/components/LeadershipSection";
 
 const About = () => {
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen flex flex-col overflow-x-clip max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -53,7 +53,7 @@ This vision continues to drive Haven Word Church as it seeks to ignite hearts, r
         </section>
 
         {/* Our Mission & Values Section */}
-        <section className="section-padding bg-muted">
+        <section className="section-padding band-blue">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
               <h2 className="heading-lg text-center mb-12 text-foreground">Our Mission & Vision</h2>

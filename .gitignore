@@ -23,3 +23,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vite temp config files
+vite.config.*.timestamp-*
+
+# Drop-off folder for new fliers (copied into public/pictures when used)
+updated_folder_for_fliers/

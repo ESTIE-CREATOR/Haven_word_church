@@ -4,7 +4,7 @@ import Logo from "@/components/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground border-t border-primary/80">
+    <footer className="bg-[hsl(var(--footer-bg))] text-primary-foreground border-t border-[hsl(var(--footer-border))]">
       <div className="container-custom px-4 sm:px-6 py-8 sm:py-10 md:py-12">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           {/* Brand */}
@@ -88,7 +88,7 @@ const Footer = () => {
               <div>
                 <p className="text-primary-foreground/70 mb-1">Phone</p>
                 <p className="text-primary-foreground/90 text-sm">
-                  <a href="tel:+2348158884938" className="hover:text-primary-foreground transition-colors">
+                  <a href="tel:+2348169934313" className="hover:text-primary-foreground transition-colors">
                     +234 816 993 4313
                   </a>
                 </p>

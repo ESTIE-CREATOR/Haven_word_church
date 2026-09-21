@@ -34,7 +34,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen flex flex-col overflow-x-clip max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -81,7 +81,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-lg mb-1 text-foreground">Phone</h3>
                       <p className="text-muted-foreground">
-                        <a href="tel:+2348158884938" className="hover:text-primary transition-colors">+234 816 993 4313</a>
+                        <a href="tel:+2348169934313" className="hover:text-primary transition-colors">+234 816 993 4313</a>
                       </p>
                       <p className="text-muted-foreground">
                         <a href="tel:+2349077469204" className="hover:text-primary transition-colors">+234 907 746 9204</a>
@@ -170,7 +170,7 @@ const Contact = () => {
         </section>
         
         {/* Map Section */}
-        <section className="bg-muted section-padding">
+        <section className="band-blue section-padding">
           <div className="container-custom">
             <div className="h-96 w-full rounded-lg overflow-hidden shadow-lg">
               <iframe

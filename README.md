@@ -1,3 +1,42 @@
+# Haven Word Church — The Spread City
+
+The website for Haven Word Church (havenwordchurch.com). Built with Vite, React, TypeScript and Tailwind CSS, and deployed on Vercel.
+
+## Run it on your computer
+
+```bash
+npm install --legacy-peer-deps   # first time only
+npm run dev                      # then open http://localhost:8080
+```
+
+Videos on the Messages page come from YouTube. For them to load locally, create a `.env` file in this folder (copy `.env.example`) with the YouTube API key and the channel's uploads playlist ID. On Vercel the same values are set under Project Settings → Environment Variables.
+
+Other commands: `npm run build` (production build), `npm run lint`.
+
+## Updating events
+
+All events live in one file: `src/data/events.ts`.
+
+- **Add an event:** copy one of the blocks and change the text. Put the flier in `public/pictures/events_page _fliers/` and point `image` at it.
+- **Remove an event:** delete its block.
+- **`endsOn`** is the last day of the event (`YYYY-MM-DD`). The day after, the event disappears from the site by itself, and the next event takes over the "Up Next" card on the home page.
+
+Weekly services (and their fliers) are at the top of `src/components/ServicesSection.tsx`. Branches are in `src/pages/Locations.tsx`. Bank accounts are at the top of `src/pages/Giving.tsx`.
+
+## Where things are
+
+| What | Where |
+| --- | --- |
+| Pages | `src/pages/` |
+| Home page sections | `src/components/` (`Hero`, `WelcomeSection`, `ServicesSection`, …) |
+| Intro animation | `src/components/IntroAnimation.tsx` (plays once per visit, has a Skip button) |
+| Scroll animations (every page) | `src/components/ScrollReveal.tsx` |
+| Colours, blue/orange section bands | `src/index.css` (`band-blue`, `band-orange`) |
+| YouTube | `src/services/youtube.ts` |
+| Pictures | `public/pictures/` |
+
+## Screenshots
+
 <img width="949" height="445" alt="Image" src="https://github.com/user-attachments/assets/e70a8447-3a8e-4838-8dde-f1ab0cbc8c85" />
 
 <img width="948" height="430" alt="Image" src="https://github.com/user-attachments/assets/d64ee7b1-549f-440c-a4ac-43b123ad6c26" />

@@ -31,12 +31,12 @@ export function TubelightHeader() {
   return (
     <header className="relative">
       {/* Desktop: Tubelight Navbar */}
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <NavBar items={navItems} />
       </div>
 
       {/* Mobile: Hamburger Menu */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary/80 overflow-x-hidden max-w-full">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary/80 overflow-x-clip max-w-full">
         <div className="flex items-center justify-between px-2 sm:px-4 py-3 max-w-full">
           <Link to="/" className="flex items-center gap-1 sm:gap-2 min-w-0 flex-shrink">
             <img 

@@ -1,26 +1,38 @@
 import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
 import { MapPin, Clock, Phone, Mail } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import SectionHeading from "@/components/SectionHeading";
+
+const MAP_QUERY = "9VXM+797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo";
+
+// The main branch
+const MAIN_BRANCH = {
+  city: "Ibadan",
+  church: "Haven Word Church",
+  address: "Opposite Gate 5, Adamasingba Stadium, 107D Akintola Rd, Ibadan 200284, Oyo",
+  phones: [
+    { label: "+234 816 993 4313", href: "tel:+2348169934313" },
+    { label: "+234 907 746 9204", href: "tel:+2349077469204" },
+  ],
+  email: "havenwordchurch@gmail.com",
+  services: [
+    { day: "Sunday Service", time: "7:30 AM & 10:00 AM" },
+    { day: "Midweek Service (Wednesday)", time: "5:30 PM" },
+  ],
+};
+
+// Other branches. Add `address` to a branch once its venue is confirmed and it will show on the card.
+const BRANCHES: { city: string; day: string; time: string; address?: string }[] = [
+  { city: "Owerri", day: "Sunday Service", time: "9:00 AM" },
+  { city: "Abuja", day: "Sunday Service", time: "8:00 AM" },
+  { city: "Lagos", day: "Sunday Service", time: "9:00 AM" },
+];
 
 const Locations = () => {
-  const locations = [
-    {
-      name: "Haven Word Church - The Spread City",
-      address: "9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo",
-      phone: "+234 816 993 4313 / +234 907 746 9204",
-      email: "havenwordchurch@gmail.com",
-      services: [
-        { day: "Sunday", time: "7:30 AM & 10:00 AM", type: "Worship Service" },
-        { day: "Wednesday", time: "5:30 PM", type: "Bible Study" },
-      ],
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800",
-      coordinates: { lat: 7.3775, lng: 3.9470 },
-    },
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen flex flex-col overflow-x-clip max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -36,87 +48,107 @@ const Locations = () => {
           </div>
         </section>
 
-        {/* Map Section */}
-        <section className="bg-muted section-padding">
-          <div className="container-custom mb-8">
-            <div className="h-96 w-full rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps?q=9VXM+797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo&output=embed"
-                width="100%" height="100%" style={{ border: 0 }}
-                allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                title="Haven Word Church Location"
-              ></iframe>
-            </div>
-            <div className="text-center mt-4">
-              <a href="https://www.google.com/maps/search/?api=1&query=9VXM%2B797+Haven+Word+Church+107D+Akintola+Rd+Ibadan+200284+Oyo" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
-                View on Google Maps
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Locations List */}
+        {/* Branches */}
         <section className="section-padding bg-background">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto">
-              {locations.map((location, index) => (
-                <Card key={index} className="overflow-hidden bg-card border-border">
-                  <CardContent className="p-6 md:p-8">
-                    <h2 className="heading-md mb-6 text-foreground">{location.name}</h2>
-                    
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-foreground mb-1">Address</p>
-                          <p className="text-muted-foreground">{location.address}</p>
-                        </div>
-                      </div>
+            <SectionHeading align="center" eyebrow="One City at a Time" title="The Spread City" outlined="Branches" className="mb-8 md:mb-12" />
 
-                      <div className="flex items-start gap-3">
-                        <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-foreground mb-1">Phone</p>
-                          <p className="text-muted-foreground">{location.phone}</p>
-                        </div>
-                      </div>
+            {/* Main branch - the same family as the others, but given the big panel and the map */}
+            <div className="band-blue mx-auto grid max-w-6xl overflow-hidden rounded-3xl shadow-2xl lg:grid-cols-2">
+              <div className="p-6 sm:p-10">
+                <span className="inline-flex items-center rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#0c1140]">
+                  Main Branch
+                </span>
+                <p className="mt-5 text-xs font-bold uppercase tracking-[0.3em] text-secondary">The Spread City</p>
+                <h2 className="font-display mt-2 text-4xl sm:text-5xl text-foreground">
+                  <span>{MAIN_BRANCH.city}</span>
+                </h2>
+                <p className="mt-2 text-muted-foreground">{MAIN_BRANCH.church}</p>
 
-                      <div className="flex items-start gap-3">
-                        <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-foreground mb-1">Email</p>
-                          <p className="text-muted-foreground">{location.email}</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-3">
-                        <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div className="flex-1">
-                          <p className="font-medium text-foreground mb-2">Service Times</p>
-                          {location.services.map((service, idx) => (
-                            <div key={idx} className="mb-2">
-                              <p className="text-muted-foreground">
-                                <span className="font-semibold">{service.day}:</span> {service.time}
-                              </p>
-                              <p className="text-sm text-muted-foreground">{service.type}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {MAIN_BRANCH.services.map((service) => (
+                    <div key={service.day} className="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+                      <p className="flex items-center gap-2 font-semibold text-foreground">
+                        <Clock className="h-4 w-4 flex-shrink-0 text-secondary" />
+                        {service.time}
+                      </p>
+                      <p className="mt-1 text-sm text-muted-foreground">{service.day}</p>
                     </div>
+                  ))}
+                </div>
 
-                    <div className="mt-6 pt-6 border-t border-border">
-                      <a
-                        href={`https://maps.google.com/?q=${encodeURIComponent(location.address)}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
-                      >
+                <ul className="mt-6 space-y-3 text-sm sm:text-base text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-secondary" />
+                    {MAIN_BRANCH.address}
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Phone className="mt-0.5 h-5 w-5 flex-shrink-0 text-secondary" />
+                    <span className="flex flex-wrap gap-x-4 gap-y-1">
+                      {MAIN_BRANCH.phones.map((phone) => (
+                        <a key={phone.href} href={phone.href} className="hover:text-foreground hover:underline">
+                          {phone.label}
+                        </a>
+                      ))}
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-secondary" />
+                    <a href={`mailto:${MAIN_BRANCH.email}`} className="break-all hover:text-foreground hover:underline">
+                      {MAIN_BRANCH.email}
+                    </a>
+                  </li>
+                </ul>
+
+                <div className="mt-8">
+                  <InteractiveHoverButton asChild text="Get Directions" className="w-fit border-white bg-white text-[#0c1140] hover:bg-white/90">
+                    <a href={`https://www.google.com/maps/search/?api=1&query=${MAP_QUERY.replace("+797", "%2B797")}`} target="_blank" rel="noopener noreferrer">
+                      Get Directions
+                    </a>
+                  </InteractiveHoverButton>
+                </div>
+              </div>
+
+              <div className="min-h-[320px] lg:min-h-full">
+                <iframe
+                  src={`https://www.google.com/maps?q=${MAP_QUERY}&output=embed`}
+                  width="100%" height="100%" style={{ border: 0, minHeight: 320 }}
+                  allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                  title="The Spread City Ibadan - Haven Word Church location"
+                  className="block h-full w-full"
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Other branches */}
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+              {BRANCHES.map((branch) => (
+                <div key={branch.city} className="rounded-3xl border border-border border-l-4 border-l-secondary bg-muted p-6 sm:p-8 transition-transform duration-300 hover:-translate-y-1">
+                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-secondary">The Spread City</p>
+                  <h3 className="font-display mt-2 text-2xl sm:text-3xl text-foreground">
+                    <span>{branch.city}</span>
+                  </h3>
+                  <div className="mt-5 flex items-center gap-3">
+                    <Clock className="h-5 w-5 text-primary flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-foreground">{branch.time}</p>
+                      <p className="text-sm text-muted-foreground">{branch.day}</p>
+                    </div>
+                  </div>
+                  <div className="mt-5 pt-5 border-t border-border">
+                    {branch.address ? (
+                      <p className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-primary" />
+                        {branch.address}
+                      </p>
+                    ) : (
+                      <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
                         <MapPin className="h-4 w-4" />
-                        Get Directions
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
+                        Contact us for the venue
+                      </Link>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

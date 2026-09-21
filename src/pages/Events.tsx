@@ -1,26 +1,19 @@
 import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
-import EventCard from "@/components/EventCard";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin } from "lucide-react";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import SectionHeading from "@/components/SectionHeading";
+import ServicesSection from "@/components/ServicesSection";
+import FlierDialog from "@/components/FlierDialog";
+import { getUpcomingEvents } from "@/data/events";
+import { cn } from "@/lib/utils";
 
 const Events = () => {
-  const upcomingEvents = [
-    { title: "Church Anniversary", date: "March 20, 2026.", time: "Once a Year", description: "Join us as we celebrate another year of God’s grace, growth, and transformation.", image: "/pictures/events_page _fliers/anniversary_flier.jpg" },
-    { title: "Daily with Jesus", date: "June, 2026.", time: "Once a Year", description: "Join us daily for prayer, worship, and fellowship with Jesus.", image: "/pictures/events_page _fliers/Daily With Jesus banner.png"},
-    { title: "Burning Hearts Submit", date: "April, 2026.", time: "Once a Year", description: "A powerful retreat that holds once a year for spiritual renewal and transformation.", image: "/pictures/events_page _fliers/burning heart submit.jpg" },
-    { title: "Soul Winners Conference", date: "December, 2026.", time: "Once a Year", description: "A transformative camp that holds once a year, equipping believers to win souls for Christ.", image: "/pictures/events_page _fliers/496947425_9802487696509088_2913698270647924602_n.jpg" },
-    { title: "Monthly 6 Hours with Jesus (Teenagers)", date: "Monthly", time: "6 Hours", description: "A special monthly event for teenagers - 6 hours dedicated to worship, teaching, and fellowship with Jesus.", image: "/pictures/events_page _fliers/588501720_122144197112893788_8804863929633027602_n.jpg" },
-    { title: "Church Prays", date: "Month End", time: "Monthly", description: "Join us every month end for corporate prayer and intercession for our church and community.", image: "/pictures/events_page _fliers/5892985612095130962_120.jpg" },
-    { title: "Ibadan Miracle Crusade", date: "October, 2026", time: "Monthly", description: "Join us every month end for corporate prayer and intercession for our church and community.", image: "/pictures/events_page _fliers/IMC.jpg" },
-  ];
-
-  const regularEvents = [
-    { title: "Sunday Worship Service", date: "Every Sunday", time: "7:30 AM & 10:00 AM", description: "Join us for inspiring worship and biblical teaching." },
-    { title: "Wednesday Bible Study", date: "Every Wednesday", time: "5:30 PM", description: "Deep dive into God's Word with interactive study and discussion." },
-  ];
+  // Events drop off this list by themselves once their date has passed
+  const upcomingEvents = getUpcomingEvents();
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen flex flex-col overflow-x-clip max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -40,42 +33,93 @@ const Events = () => {
         {/* Upcoming Events */}
         <section className="section-padding bg-background">
           <div className="container-custom">
-            <h2 className="heading-lg text-center mb-12 text-foreground">Upcoming Events</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <SectionHeading align="center" eyebrow="Mark Your Calendar" title="Upcoming" outlined="Events" className="mb-6 md:mb-10" />
+
+            {upcomingEvents.length === 0 && (
+              <p className="text-center text-muted-foreground">More events will be announced soon.</p>
+            )}
+
+            {/* One full-width row per event, with the flier switching sides each time */}
+            <div className="grid max-w-5xl mx-auto">
               {upcomingEvents.map((event, index) => (
-                <EventCard key={index} title={event.title} date={event.date} time={event.time} description={event.description} image={event.image} />
+                <article
+                  key={event.title}
+                  className="grid items-center gap-8 border-b border-border py-10 last:border-b-0 md:grid-cols-12 md:gap-14 md:py-16"
+                >
+                  {event.image && (
+                    <div className={cn("md:col-span-5", index % 2 === 1 && "md:order-2")}>
+                      <FlierDialog title={event.title} image={event.image}>
+                        <button
+                          type="button"
+                          aria-label={`View ${event.title} flier`}
+                          className="group mx-auto block w-full max-w-sm overflow-hidden rounded-2xl shadow-xl ring-1 ring-border transition-transform duration-500 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:max-w-none"
+                        >
+                          {/* The flier keeps its own shape, so nothing is cropped, stretched or padded with bars */}
+                          <img
+                            src={event.image}
+                            alt={`${event.title} flier`}
+                            loading="lazy"
+                            className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                          />
+                        </button>
+                      </FlierDialog>
+                    </div>
+                  )}
+
+                  <div className={cn(event.image ? "md:col-span-7" : "md:col-span-12")}>
+                    <div className="flex items-center gap-4">
+                      <span className="font-display text-outline text-4xl sm:text-5xl" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      {index === 0 && (
+                        <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#0c1140]">
+                          <span className="relative flex h-2 w-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0c1140] opacity-60" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0c1140]" />
+                          </span>
+                          Up Next
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="mt-4 text-sm font-bold uppercase tracking-[0.25em] text-secondary">{event.date}</p>
+                    <h3 className="font-display mt-2 text-2xl sm:text-3xl md:text-4xl text-foreground">
+                      <span>{event.title}</span>
+                    </h3>
+
+                    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-foreground">
+                      {event.time && (
+                        <span className="inline-flex items-center gap-2 font-semibold">
+                          <Clock className="h-4 w-4 text-secondary" />
+                          {event.time}
+                        </span>
+                      )}
+                      {event.location && (
+                        <span className="inline-flex items-start gap-2">
+                          <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-secondary" />
+                          {event.location}
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="mt-5 max-w-xl text-base text-muted-foreground leading-relaxed">{event.description}</p>
+
+                    {event.image && (
+                      <div className="mt-7">
+                        <FlierDialog title={event.title} image={event.image}>
+                          <InteractiveHoverButton text="View Flier" className="w-fit" />
+                        </FlierDialog>
+                      </div>
+                    )}
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Regular Events */}
-        <section className="section-padding bg-muted">
-          <div className="container-custom">
-            <h2 className="heading-lg text-center mb-12 text-foreground">Regular Weekly Events</h2>
-            <div className="max-w-4xl mx-auto space-y-8">
-              {regularEvents.map((event, index) => (
-                <div key={index} className="bg-card p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center border border-border">
-                  <div className="flex items-center justify-center gap-3 mb-4">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Calendar className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground">{event.title}</h3>
-                      <p className="text-sm text-muted-foreground">{event.date}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-3">
-                    <MapPin className="h-4 w-4" />
-                    <span>9VXM+797 Haven Word Church, 107D Akintola Rd, Ibadan 200284, Oyo</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">{event.description}</p>
-                  <p className="text-sm font-medium text-primary">{event.time}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Regular Weekly Services */}
+        <ServicesSection />
       </main>
       <Footer />
     </div>

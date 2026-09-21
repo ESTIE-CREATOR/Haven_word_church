@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&family=Archivo:wdth,wght@125,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 26% 14%;
 
-    --primary: 233 50% 36%;
+    --primary: 233 56% 29%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 30 87% 54%;
@@ -33,15 +33,15 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 233 50% 36%;
+    --ring: 233 56% 29%;
 
     --radius: 0.5rem;
 
     /* Header/Footer colors */
-    --header-bg: 233 50% 36%;
-    --header-border: 233 50% 30%;
-    --footer-bg: 233 50% 36%;
-    --footer-border: 233 50% 30%;
+    --header-bg: 233 56% 29%;
+    --header-border: 233 56% 23%;
+    --footer-bg: 233 60% 15%;
+    --footer-border: 233 60% 22%;
   }
 
   .dark {
@@ -54,7 +54,7 @@
     --popover: 222 25% 11%;
     --popover-foreground: 210 20% 92%;
 
-    --primary: 233 50% 50%;
+    --primary: 233 52% 44%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 30 87% 54%;
@@ -71,12 +71,12 @@
 
     --border: 222 15% 20%;
     --input: 222 15% 20%;
-    --ring: 233 50% 50%;
+    --ring: 233 52% 44%;
 
     /* Header/Footer colors */
     --header-bg: 233 40% 18%;
     --header-border: 233 40% 14%;
-    --footer-bg: 233 40% 18%;
+    --footer-bg: 233 45% 10%;
     --footer-border: 233 40% 14%;
   }
 }
@@ -91,17 +91,18 @@
     overflow-x: hidden;
   }
 
+  /* clip (not hidden) so these wrappers never become scroll areas with their own scrollbar */
   body {
     @apply bg-background text-foreground text-sm;
     font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   #root {
     @apply bg-background min-h-screen;
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -119,7 +120,7 @@
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-4 md:px-6 max-w-full overflow-x-hidden;
+    @apply container mx-auto px-4 md:px-6 max-w-full overflow-x-clip;
   }
   
   .section-padding {
@@ -253,4 +254,208 @@
 
 .animate-marquee {
   animation: marquee var(--duration, 40s) linear infinite;
+}
+
+/* No visible scrollbars anywhere on the site. Scrolling itself (wheel, touch, keyboard) is unaffected. */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Wide, heavy display type used for the big home page headlines */
+.font-display,
+.font-display span {
+  font-family: 'Archivo', 'Poppins', sans-serif;
+  font-weight: 900;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
+}
+
+/* Hollow lettering: only the outline of the text is drawn */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-stroke-color: var(--outline-color, hsl(var(--foreground)));
+}
+
+/* Headline with outlined copies stacked beneath it (see EchoHeadline.tsx) */
+/* Its display (inline-block) is set with Tailwind classes where it is used, so it can be hidden per breakpoint */
+.echo-headline {
+  position: relative;
+}
+
+.echo-headline-layer {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--echo-color, rgba(255, 255, 255, 0.9));
+  transform: translateY(calc(var(--echo-layer) * var(--echo-spread, 0.13em)));
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Scroll reveal (see ScrollReveal.tsx). Content is only ever hidden once JS has opted it in. */
+[data-reveal="init"] {
+  opacity: 0;
+  transform: translateY(48px);
+  will-change: opacity, transform;
+}
+
+[data-reveal="init"][data-reveal-from="left"] {
+  transform: translateX(-90px);
+}
+
+[data-reveal="init"][data-reveal-from="right"] {
+  transform: translateX(90px);
+}
+
+[data-reveal="init"][data-reveal-from="zoom"] {
+  transform: scale(0.9);
+}
+
+/* Phones have less room to travel across */
+@media (max-width: 640px) {
+  [data-reveal="init"][data-reveal-from="left"] {
+    transform: translateX(-48px);
+  }
+
+  [data-reveal="init"][data-reveal-from="right"] {
+    transform: translateX(48px);
+  }
+}
+
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Colour bands: full-width sections in brand blue or orange with soft glows behind the content.
+   Swap a section's bg-* class for band-blue / band-orange. Text colours adapt by themselves,
+   and any card (bg-card / bg-background) inside a band keeps its normal colours. */
+.band-blue,
+.band-orange {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: hsl(var(--foreground));
+}
+
+.band-blue::before,
+.band-blue::after,
+.band-orange::before,
+.band-orange::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+.band-blue {
+  background: hsl(233 56% 29%);
+  --foreground: 0 0% 100%;
+  --muted-foreground: 228 45% 87%;
+  --border: 233 40% 42%;
+}
+
+.band-blue::before {
+  top: -6rem;
+  right: -6rem;
+  width: 18rem;
+  height: 18rem;
+  background: hsl(30 87% 54% / 0.28);
+}
+
+.band-blue::after {
+  bottom: -8rem;
+  left: -6rem;
+  width: 20rem;
+  height: 20rem;
+  background: hsl(30 87% 54% / 0.14);
+}
+
+.band-orange {
+  background: hsl(30 87% 54%);
+  --foreground: 233 60% 15%;
+  --muted-foreground: 233 50% 20%;
+  --border: 30 70% 42%;
+}
+
+.band-orange::before {
+  top: -6rem;
+  left: -6rem;
+  width: 18rem;
+  height: 18rem;
+  background: hsl(0 0% 100% / 0.3);
+}
+
+.band-orange::after {
+  bottom: -8rem;
+  right: -6rem;
+  width: 20rem;
+  height: 20rem;
+  background: hsl(233 56% 29% / 0.22);
+}
+
+/* Accent colours that would vanish against their own band */
+.band-blue .text-primary {
+  color: hsl(var(--secondary));
+}
+
+.band-orange .text-secondary {
+  color: hsl(233 60% 15%);
+}
+
+/* Cards sitting on a band go back to the normal palette */
+.band-blue :is(.bg-card, .bg-background),
+.band-orange :is(.bg-card, .bg-background) {
+  --foreground: 220 26% 14%;
+  --muted-foreground: 220 9% 46%;
+  --border: 220 13% 91%;
+  color: hsl(var(--foreground));
+}
+
+.dark .band-blue :is(.bg-card, .bg-background),
+.dark .band-orange :is(.bg-card, .bg-background) {
+  --foreground: 210 20% 92%;
+  --muted-foreground: 220 9% 60%;
+  --border: 222 15% 20%;
+}
+
+.band-blue :is(.bg-card, .bg-background) .text-primary {
+  color: hsl(var(--primary));
+}
+
+.band-orange :is(.bg-card, .bg-background) .text-secondary {
+  color: hsl(var(--secondary));
+}
+
+/* A blue button directly on the blue band needs an edge to stay visible */
+.band-blue :is(a, button).bg-primary {
+  border-color: hsl(0 0% 100% / 0.5);
+}
+
+.band-blue :is(.bg-card, .bg-background) :is(a, button).bg-primary {
+  border-color: hsl(var(--primary));
 }

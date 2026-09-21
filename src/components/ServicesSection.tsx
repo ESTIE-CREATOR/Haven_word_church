@@ -1,100 +1,147 @@
-import { Calendar, BookOpen } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import MotionInView from "@/components/MotionInView";
-import { Card, CardContent } from "@/components/ui/card";
+import { Clock, MapPin } from "lucide-react";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import SectionHeading from "@/components/SectionHeading";
+import FlierDialog from "@/components/FlierDialog";
+
+interface Flier {
+  src: string;
+  // How long this flier stays up before the next one fades in
+  seconds: number;
+}
+
+interface WeeklyService {
+  number: string;
+  // Three-letter day shown big on the ticket stub
+  short: string;
+  name: string;
+  day: string;
+  time: string;
+  blurb: string;
+  fliers: Flier[];
+}
+
+const SERVICES: WeeklyService[] = [
+  {
+    number: "01",
+    short: "Sun",
+    name: "Sunday Service",
+    day: "Every Sunday",
+    time: "7:30 AM & 10:00 AM",
+    blurb: "Join us for inspiring worship and biblical teaching",
+    // The main flier is given most of the time; the second one appears briefly between showings
+    fliers: [
+      { src: "/pictures/services_fliers/sunday_service.jpg", seconds: 9 },
+      { src: "/pictures/services_fliers/sunday_service_2.jpg", seconds: 4 },
+    ],
+  },
+  {
+    number: "02",
+    short: "Wed",
+    name: "Midweek Service",
+    day: "Every Wednesday",
+    time: "5:30 PM",
+    blurb: "Deep dive into God's Word with interactive study",
+    fliers: [{ src: "/pictures/services_fliers/midweek_service.jpg", seconds: 0 }],
+  },
+];
+
+const ADDRESS = "Opposite Gate 5, Adamasingba Stadium, Ibadan, Oyo State";
+
+const ServiceFlier = ({ service }: { service: WeeklyService }) => {
+  const [active, setActive] = useState(0);
+  const { fliers } = service;
+
+  useEffect(() => {
+    if (fliers.length < 2) return;
+    const timer = window.setTimeout(() => setActive((i) => (i + 1) % fliers.length), fliers[active].seconds * 1000);
+    return () => window.clearTimeout(timer);
+  }, [active, fliers]);
+
+  return (
+    <FlierDialog title={service.name} image={fliers[active].src}>
+      <button
+        type="button"
+        aria-label={`View ${service.name} flier`}
+        className="group relative block aspect-[4/5] w-full overflow-hidden rounded-xl shadow-xl shadow-black/40 ring-1 ring-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+      >
+        {fliers.map((flier, i) => (
+          <span
+            key={flier.src}
+            className={`absolute inset-0 transition-opacity duration-1000 ${i === active ? "opacity-100" : "opacity-0"}`}
+          >
+            {/* A blurred copy fills the box, and the whole flier sits on top of it: never cropped, stretched or barred */}
+            <img src={flier.src} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl" />
+            <img
+              src={flier.src}
+              alt={i === active ? `${service.name} flier` : ""}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+          </span>
+        ))}
+      </button>
+    </FlierDialog>
+  );
+};
 
 const ServicesSection = () => {
   return (
-    <section className="bg-muted section-padding">
+    <section className="band-blue section-padding">
       <div className="container-custom">
-        <MotionInView duration={0.8} className="text-center mb-6 sm:mb-8 md:mb-12">
-          <h2 className="heading-lg text-foreground">Weekly Services</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-            Join us for worship, teaching, and fellowship
-          </p>
-        </MotionInView>
+        <SectionHeading align="center" eyebrow="Weekly Services" title="Join us" outlined="this week" className="mb-10 md:mb-16" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-          {/* Sunday Service */}
-          <MotionInView direction="left" duration={0.8}>
-            <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30 bg-card">
-              <div className="relative h-64 md:h-80 overflow-hidden">
-                <img
-                  src="/pictures/services_fliers/sunday_service_flier .jpg"
-                  alt="Sunday Service"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-primary/20 rounded-lg">
-                      <Calendar className="h-6 w-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white">Sunday Service</h3>
-                  </div>
-                  <p className="text-white/90 text-sm">Join us for inspiring worship and biblical teaching</p>
+        {/* Each service is a ticket: a day stub, a perforated seam, the details, and the flier tucked in the corner */}
+        <div className="grid gap-6 max-w-4xl mx-auto">
+          {SERVICES.map((service) => (
+            <article
+              key={service.name}
+              className="group relative grid overflow-hidden rounded-3xl shadow-2xl shadow-black/30 transition-transform duration-300 hover:-translate-y-1 sm:grid-cols-[10rem_1fr] md:grid-cols-[12rem_1fr]"
+            >
+              {/* Stub */}
+              <div className="flex items-center justify-between gap-3 bg-secondary px-6 py-4 text-[#0c1140] sm:flex-col sm:justify-center sm:py-8 sm:text-center">
+                <span className="font-display text-4xl sm:text-5xl md:text-6xl">
+                  <span>{service.short}</span>
+                </span>
+                <span className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.25em]">{service.day}</span>
+              </div>
+
+              {/* Body */}
+              <div className="relative flex items-center gap-4 sm:gap-6 border-t-2 border-dashed border-white/30 bg-white/10 p-5 ring-1 ring-inset ring-white/15 backdrop-blur-md sm:border-l-2 sm:border-t-0 sm:p-7">
+                {/* Punched notches on the seam */}
+                <span className="absolute -top-3 -left-3 hidden h-6 w-6 rounded-full bg-[hsl(233_56%_29%)] sm:block" aria-hidden="true" />
+                <span className="absolute -bottom-3 -left-3 hidden h-6 w-6 rounded-full bg-[hsl(233_56%_29%)] sm:block" aria-hidden="true" />
+
+                <div className="min-w-0 flex-1">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-secondary">Service {service.number}</p>
+                  <h3 className="font-display mt-1 text-lg sm:text-2xl text-foreground">
+                    <span>{service.name}</span>
+                  </h3>
+                  <p className="font-display mt-3 flex items-center gap-2 text-base sm:text-xl text-secondary">
+                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                    <span>{service.time}</span>
+                  </p>
+                  <p className="mt-3 text-sm sm:text-base text-muted-foreground">{service.blurb}</p>
+                  <p className="mt-3 flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                    <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-secondary" />
+                    {ADDRESS}
+                  </p>
+                </div>
+
+                {/* Flier, small and tilted; it straightens on hover and opens full size when clicked */}
+                <div className="w-20 sm:w-32 flex-shrink-0 rotate-3 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-105">
+                  <ServiceFlier service={service} />
                 </div>
               </div>
-              <CardContent className="p-6">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm font-medium">Every Sunday</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <span className="text-sm">7:30 AM & 10:00 AM</span>
-                  </div>
-                  <div className="pt-2 border-t border-border">
-                    <p className="text-sm text-muted-foreground mb-4">Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
-                    <InteractiveHoverButton asChild text="Get Directions" className="w-full">
-                      <Link to="/locations">Get Directions</Link>
-                    </InteractiveHoverButton>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </MotionInView>
+            </article>
+          ))}
+        </div>
 
-          {/* Wednesday Bible Study */}
-          <MotionInView direction="right" duration={0.8}>
-            <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30 bg-card">
-              <div className="relative h-64 md:h-80 overflow-hidden">
-                <img
-                  src="/pictures/services_fliers/wednessday.jpg"
-                  alt="Wednesday Bible Study"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-secondary/20 rounded-lg">
-                      <BookOpen className="h-6 w-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white">Bible Study</h3>
-                  </div>
-                  <p className="text-white/90 text-sm">Deep dive into God's Word with interactive study</p>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-sm font-medium">Every Wednesday</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <span className="text-sm">5:30 PM</span>
-                  </div>
-                  <div className="pt-2 border-t border-border">
-                    <p className="text-sm text-muted-foreground mb-4">Opposite Gate 5, Adamasingba, Ibadan, Oyo State</p>
-                    <InteractiveHoverButton asChild text="Get Directions" className="w-full">
-                      <Link to="/locations">Get Directions</Link>
-                    </InteractiveHoverButton>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </MotionInView>
+        <div className="mt-10 md:mt-12 flex justify-center">
+          <InteractiveHoverButton asChild text="Get Directions" className="border-white bg-white text-[#0c1140] hover:bg-white/90">
+            <Link to="/locations">Get Directions</Link>
+          </InteractiveHoverButton>
         </div>
       </div>
     </section>

@@ -5,6 +5,8 @@ export interface YouTubeVideo {
   title: string;
   description: string;
   thumbnail: string;
+  thumbnailLarge: string;
+  thumbnailTall: string;
   publishedAt: string;
   duration: string;
   durationSeconds: number;
@@ -84,7 +86,8 @@ export async function fetchPlaylistVideos(
 
   try {
     const playlistUrl = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
-    playlistUrl.searchParams.set("part", "snippet,contentDetails");
+    playlistUrl.searchParams.set("part", "contentDetails");
+    playlistUrl.searchParams.set("fields", "nextPageToken,items/contentDetails/videoId");
     playlistUrl.searchParams.set("playlistId", playlistId);
     playlistUrl.searchParams.set("maxResults", maxResults.toString());
     playlistUrl.searchParams.set("key", YOUTUBE_API_KEY);
@@ -110,6 +113,8 @@ export async function fetchPlaylistVideos(
 
     const videosUrl = new URL("https://www.googleapis.com/youtube/v3/videos");
     videosUrl.searchParams.set("part", "snippet,contentDetails");
+    // Ask only for the fields the site uses, which keeps the response small
+    videosUrl.searchParams.set("fields", "items(id,snippet(title,description,thumbnails,publishedAt,channelTitle),contentDetails/duration)");
     videosUrl.searchParams.set("id", videoIds);
     videosUrl.searchParams.set("key", YOUTUBE_API_KEY);
 
@@ -127,7 +132,12 @@ export async function fetchPlaylistVideos(
         id: videoId,
         title: item.snippet.title,
         description: item.snippet.description,
-        thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url,
+        // `medium` is a small (about 15 KB) true 16:9 image, right for grids and lists on slow connections
+        thumbnail: item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.high?.url || item.snippet.thumbnails.default?.url,
+        // Only for the one featured video shown large. `high` is 4:3 with black bars, which a 16:9 box crops away
+        thumbnailLarge: item.snippet.thumbnails.maxres?.url || item.snippet.thumbnails.standard?.url || item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url,
+        // For Shorts, which are cropped to a tall box and so need more height than `medium` has
+        thumbnailTall: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url,
         publishedAt: formatDate(item.snippet.publishedAt),
         duration: formatDuration(rawDuration),
         durationSeconds: parseDurationToSeconds(rawDuration),
@@ -196,7 +206,28 @@ export async function fetchYouTubeVideos(
   }
 }
 
-// Helper to check if a video is a Short (≤10 minutes / 600 seconds)
+// Helper to check if a video is a Short (YouTube Shorts are at most 3 minutes / 180 seconds)
 export function isShort(video: YouTubeVideo): boolean {
-  return video.durationSeconds > 0 && video.durationSeconds <= 600;
+  return video.durationSeconds > 0 && video.durationSeconds <= 180;
+}
+
+// Uploads are titled "Message Title || Speaker Name" - split that into its two parts
+export function splitVideoTitle(title: string): { title: string; speaker?: string } {
+  // Drop hashtags like "#jesus #gospel" that Shorts carry in their titles
+  const withoutTags = title.replace(/(^|\s)#[^\s#]+/g, "").trim();
+  const [main, ...rest] = (withoutTags || title).split("||");
+  const speaker = rest.join("||").trim();
+  return { title: main.trim() || title, speaker: speaker || undefined };
+}
+
+// Link to the church's YouTube channel, worked out from whichever ID is configured
+export function getChannelUrl(): string | undefined {
+  if (YOUTUBE_CHANNEL_ID) {
+    return `https://www.youtube.com/channel/${YOUTUBE_CHANNEL_ID}`;
+  }
+  // A channel's uploads playlist ID is its channel ID with "UU" in place of "UC"
+  if (YOUTUBE_PLAYLIST_ID.startsWith("UU")) {
+    return `https://www.youtube.com/channel/UC${YOUTUBE_PLAYLIST_ID.slice(2)}`;
+  }
+  return undefined;
 }

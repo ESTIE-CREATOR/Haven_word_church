@@ -1,12 +1,30 @@
 import { TubelightHeader } from "@/components/TubelightHeader";
 import Footer from "@/components/Footer";
-import { Heart } from "lucide-react";
+import { useState } from "react";
+import { Heart, Copy, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
+const ACCOUNTS = [
+  { bank: "First Bank", name: "Haven Word Church", number: "2048801494" },
+  { bank: "Wema Bank Plc", name: "Haven Word Church", number: "0275817169" },
+];
+
 const Giving = () => {
+  const [copied, setCopied] = useState<string | null>(null);
+
+  const copyNumber = async (number: string) => {
+    try {
+      await navigator.clipboard.writeText(number);
+      setCopied(number);
+      window.setTimeout(() => setCopied(null), 2000);
+    } catch {
+      // Clipboard not available - the number is still there to read
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen flex flex-col overflow-x-clip max-w-full">
       <TubelightHeader />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -25,30 +43,45 @@ const Giving = () => {
 
 
         {/* Bank Details Section */}
-        <section className="section-padding bg-muted">
+        <section className="section-padding band-orange">
           <div className="container-custom">
-            <Card className="max-w-2xl mx-auto bg-card border-border">
-              <CardContent className="p-8">
-                <h2 className="heading-md text-center mb-6 text-foreground">Bank Account Details</h2>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-3 border-b border-border">
-                    <span className="font-medium text-muted-foreground">Account Name:</span>
-                    <span className="text-foreground font-semibold">Haven Word Church</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-border">
-                    <span className="font-medium text-muted-foreground">Account Number:</span>
-                    <span className="text-foreground font-semibold">0275817169</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-border">
-                    <span className="font-medium text-muted-foreground">Bank Name:</span>
-                    <span className="text-foreground font-semibold">Wema Bank Plc</span>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground mt-6 text-center">
-                  Please include your name and "Offering" in the transfer reference
-                </p>
-              </CardContent>
-            </Card>
+            <h2 className="heading-lg text-center mb-8 text-foreground">Bank Account Details</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {ACCOUNTS.map((account) => (
+                <Card key={account.number} className="bg-card border-border">
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="heading-sm mb-4 text-foreground">{account.bank}</h3>
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-center gap-4 py-3 border-b border-border">
+                        <span className="font-medium text-muted-foreground">Account Name:</span>
+                        <span className="text-foreground font-semibold text-right">{account.name}</span>
+                      </div>
+                      <div className="flex justify-between items-center gap-4 py-3 border-b border-border">
+                        <span className="font-medium text-muted-foreground">Account Number:</span>
+                        <span className="flex items-center gap-2">
+                          <span className="text-foreground font-semibold tracking-wider">{account.number}</span>
+                          <button
+                            type="button"
+                            onClick={() => copyNumber(account.number)}
+                            aria-label={`Copy ${account.bank} account number`}
+                            className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                          >
+                            {copied === account.number ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
+                          </button>
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center gap-4 py-3 border-b border-border">
+                        <span className="font-medium text-muted-foreground">Bank Name:</span>
+                        <span className="text-foreground font-semibold text-right">{account.bank}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground mt-6 text-center">
+              Please include your name and "Offering" in the transfer reference
+            </p>
           </div>
         </section>
 
