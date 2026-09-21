@@ -6,6 +6,7 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 import EchoHeadline from "@/components/EchoHeadline";
 import FlierDialog from "@/components/FlierDialog";
 import { getNextEvent } from "@/data/events";
+import { entranceSpeed } from "@/lib/motion";
 
 interface HeroProps {
   // Hold the entrance until the intro has started to lift, so it isn't played unseen
@@ -22,6 +23,8 @@ const Hero = ({ play = true }: HeroProps) => {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      // Slower on phones, where the normal pace feels rushed
+      tl.timeScale(entranceSpeed());
 
       tl.fromTo("[data-hero-image]", { scale: 1.12 }, { scale: 1, duration: 2.2, ease: "power2.out" }, 0);
       tl.fromTo("[data-hero-headline]", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, 0.15);

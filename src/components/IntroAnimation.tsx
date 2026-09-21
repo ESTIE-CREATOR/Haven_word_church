@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ChevronsRight } from "lucide-react";
 import { ShaderAnimation } from "@/components/ui/shader-animation";
 import { shouldPlayIntro, markIntroSeen } from "@/lib/intro";
+import { entranceSpeed } from "@/lib/motion";
 
 interface IntroAnimationProps {
   // Fires as the intro starts to leave, so the page underneath can begin its own entrance
@@ -65,6 +66,8 @@ const IntroAnimation = ({ onReveal, onComplete }: IntroAnimationProps) => {
       const chars = titleRef.current!.querySelectorAll("[data-char]");
 
       const tl = gsap.timeline({ onComplete: finish });
+      // Slower on phones, where the normal pace feels rushed
+      tl.timeScale(entranceSpeed());
       timelineRef.current = tl;
 
       tl.fromTo(
